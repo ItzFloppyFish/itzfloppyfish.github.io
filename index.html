@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itz_FloppyFish — Roblox Development Systems</title>
+<meta name="description" content="Professional Roblox development systems by Itz_FloppyFish. Free tutorial versions and premium production-ready builds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<style>
+/* HOME-SPECIFIC */
+.ffhero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px;position:relative;overflow:hidden;}
+.ffhero-glow{position:absolute;top:15%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(40,120,255,0.1) 0%,transparent 70%);pointer-events:none;}
+.ffhero h1{font-size:clamp(44px,7vw,90px);font-weight:900;line-height:0.98;letter-spacing:-3px;margin-bottom:24px;max-width:900px;}
+.ffhero .l1{display:block;color:var(--tx);}
+.ffhero .l2{display:block;background:linear-gradient(135deg,#2878ff,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ffhero-sub{font-size:18px;color:var(--t2);max-width:520px;line-height:1.65;margin-bottom:40px;font-weight:400;}
+.ffhero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px;}
+
+/* STATS */
+.ffstats{padding:40px 24px 80px;}
+.ffstats-g{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1000px;margin:0 auto;}
+.ffstat{background:var(--s);border:1px solid var(--br);border-radius:16px;padding:28px 20px;text-align:center;position:relative;overflow:hidden;transition:all 0.3s;}
+.ffstat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--bl),transparent);}
+.ffstat:hover{border-color:var(--br2);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.4);}
+.ffstat-n{font-size:36px;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,var(--tx),var(--bl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px;min-height:44px;display:flex;align-items:center;justify-content:center;}
+.ffstat-l{font-size:13px;color:var(--t3);font-weight:500;}
+
+/* COMMENTS */
+.ffcmt-s{padding:80px 0;overflow:hidden;}
+.ffcmt-t{display:flex;gap:16px;animation:ffscr 40s linear infinite;width:max-content;}
+.ffcmt-t:hover{animation-play-state:paused;}
+@keyframes ffscr{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.ffcmt{flex-shrink:0;width:320px;background:var(--s);border:1px solid var(--br);border-radius:14px;padding:20px;}
+.ffcmt-stars{color:#fbbf24;font-size:13px;margin-bottom:10px;}
+.ffcmt-txt{font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:14px;}
+.ffcmt-who{font-size:12px;color:var(--t3);font-family:var(--fm);}
+.ffcmt-who span{color:var(--bl);}
+
+/* FEATURED */
+.ffsect{padding:80px 0;}
+.ffsh{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;}
+.ffsee{color:var(--bl);font-size:14px;font-weight:600;display:flex;align-items:center;gap:5px;cursor:pointer;text-decoration:none;transition:gap 0.2s;}
+.ffsee:hover{gap:9px;}
+
+/* ABOUT */
+.ffabout{padding:80px 24px;max-width:1000px;margin:0 auto;}
+.ffabout-i{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start;}
+.ffav{width:210px;height:210px;border-radius:50%;border:2px solid rgba(40,120,255,0.35);overflow:hidden;box-shadow:0 0 40px rgba(40,120,255,0.22);}
+.ffav img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
+.ffabout-c h2{font-size:34px;font-weight:800;letter-spacing:-1px;margin-bottom:14px;}
+.ffabout-c p{color:var(--t2);line-height:1.7;margin-bottom:14px;font-size:15px;}
+.ffabout-list{margin-bottom:24px;list-style:none;}
+.ffabout-list li{display:flex;align-items:center;gap:10px;padding:8px 0;color:var(--t2);font-size:14px;border-bottom:1px solid rgba(40,120,255,0.12);}
+.ffabout-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--bl);flex-shrink:0;}
+.ffabout-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+
+@media(max-width:900px){.ffstats-g{grid-template-columns:repeat(2,1fr);}.ffabout-i{grid-template-columns:1fr;}.ffav{width:160px;height:160px;}}
+</style>
+</head>
+<body>
+<div class="ff-grid-bg"></div>
+<canvas id="ff-cv"></canvas>
+<div class="ff-wrap-inner">
+
+<!-- NAV -->
+<nav class="ffnav" id="ffnav">
+  <div class="ffnav-i">
+    <a href="index.html" class="fflogo">
+      <img src="https://raw.githubusercontent.com/ViralTemplates/viral-templates-assets/refs/heads/main/YouTube_Profile_Picture.png" class="fflogo-img" alt="Itz_FloppyFish" onerror="this.style.display='none';document.getElementById('fflf').style.display='flex'">
+      <div class="fflogo-fb" id="fflf">FF</div>
+      <span class="fflogo-txt">Itz_FloppyFish</span>
+    </a>
+    <div class="ffnav-links">
+      <a class="ffnl on" href="index.html">Home</a>
+      <a class="ffnl" href="systems.html">Systems</a>
+      <a class="ffnl" href="about.html">About</a>
+    </div>
+    <div class="ffnav-r">
+      <a href="https://payhip.com/ItzFloppyFish/users/login" target="_blank" class="ff-ibtn" title="My Downloads">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </a>
+      <a href="systems.html" class="ff-btn-pr">Browse Systems <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="ffhero">
+  <div class="ffhero-glow"></div>
+  <h1>
+    <span class="l1">Build Professional</span>
+    <span class="l2">Roblox Systems Faster</span>
+  </h1>
+  <p class="ffhero-sub">Download free tutorial systems or upgrade to premium production-ready versions. 7+ years on the platform, 5+ years teaching.</p>
+  <div class="ffhero-btns">
+    <a href="systems.html" class="ff-btn-lg">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      Browse Systems
+    </a>
+    <a href="https://youtube.com/@itz_FloppyFish" target="_blank" class="ff-btn-gh yt">
+      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+      Watch on YouTube
+    </a>
+  </div>
+</section>
+
+<div class="ffglow"></div>
+
+<!-- STATS -->
+<section class="ffstats">
+  <div class="ffwrap" style="text-align:center;">
+    <span class="fflbl">Track Record</span>
+    <h2 class="fftit" style="margin-bottom:10px;">Trusted by Thousands<br>of Roblox Developers</h2>
+    <p class="ffsub" style="margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;"></p>
+  </div>
+  <div class="ffstats-g ffwrap">
+    <div class="ffstat fffade"><div style="font-size:22px;margin-bottom:10px;">&#x1F465;</div><div class="ffstat-n" id="st-s">0</div><div class="ffstat-l">Subscribers</div></div>
+    <div class="ffstat fffade"><div style="font-size:22px;margin-bottom:10px;">&#x1F441;&#xFE0F;</div><div class="ffstat-n" id="st-v">0</div><div class="ffstat-l">Total Views</div></div>
+    <div class="ffstat fffade"><div style="font-size:22px;margin-bottom:10px;">&#x1F3AC;</div><div class="ffstat-n" id="st-vd">0</div><div class="ffstat-l">Tutorial Videos</div></div>
+    <div class="ffstat fffade"><div style="font-size:22px;margin-bottom:10px;">&#x1F4C5;</div><div class="ffstat-n">7+</div><div class="ffstat-l">Years on Roblox</div></div>
+  </div>
+</section>
+
+<div class="ffdiv"></div>
+
+<!-- COMMENTS -->
+<section class="ffcmt-s">
+  <div class="ffwrap" style="text-align:center;margin-bottom:36px;">
+    <span class="fflbl">Community</span>
+    <h2 class="fftit">What Developers Say</h2>
+  </div>
+  <div class="ffcmt-t" id="ffct"></div>
+</section>
+
+<div class="ffdiv"></div>
+
+<!-- FEATURED SYSTEMS -->
+<section class="ffsect">
+  <div class="ffwrap">
+    <div class="ffsh">
+      <div><span class="fflbl" style="text-align:left;">Systems</span><h2 class="fftit">Featured Systems</h2></div>
+      <a class="ffsee" href="systems.html">View All <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="ff-cg" id="ff-feat"></div>
+  </div>
+</section>
+
+<div class="ffdiv"></div>
+
+<!-- ABOUT SNIPPET -->
+<section class="ffabout" id="ffab">
+  <div class="ffabout-i">
+    <div>
+      <div class="ffav">
+        <img src="https://raw.githubusercontent.com/ViralTemplates/viral-templates-assets/refs/heads/main/YouTube_Profile_Picture.png" alt="Itz_FloppyFish">
+      </div>
+    </div>
+    <div class="ffabout-c">
+      <span class="fflbl">About Me</span>
+      <h2>Hey, I'm Itz_FloppyFish</h2>
+      <p>I've been building and teaching Roblox development for 5+ years, on the platform for 7. I make tutorials that explain the why, not just the how.</p>
+      <p>Every system here has a free version tied to a tutorial on my channel. The premium versions are what I'd actually ship in a real game.</p>
+      <ul class="ffabout-list">
+        <li>5+ years teaching Roblox development</li>
+        <li>7+ years on the Roblox platform</li>
+        <li>DataStore, UI, Economy &amp; Progression systems</li>
+        <li>Free version with every tutorial</li>
+        <li>Premium versions are production-ready</li>
+      </ul>
+      <div class="ffabout-btns">
+        <a href="https://youtube.com/@itz_FloppyFish" target="_blank" class="ff-btn-lg">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          Watch Tutorials
+        </a>
+        <a href="about.html" class="ff-btn-gh">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ffoot">
+  <div class="ffoot-main">
+    <div>
+      <a href="index.html" class="fflogo" style="margin-bottom:14px;display:inline-flex;">
+        <img src="https://raw.githubusercontent.com/ViralTemplates/viral-templates-assets/refs/heads/main/YouTube_Profile_Picture.png" class="fflogo-img" alt="Itz_FloppyFish">
+        <span class="fflogo-txt">Itz_FloppyFish</span>
+      </a>
+      <p class="ffoot-tagline">Professional Roblox development systems and tutorials. Free download with every tutorial, premium for production-ready quality.</p>
+      <div class="ffoot-social">
+        <a href="https://youtube.com/@itz_FloppyFish" target="_blank" class="ffoot-yt" title="YouTube">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="ffoot-cols" style="grid-template-columns:repeat(2,1fr);">
+      <div class="ffoot-col">
+        <h4>Systems</h4>
+        <a href="systems.html">All Systems</a>
+        <a href="systems/item-shop.html">Item Shop</a>
+      </div>
+      <div class="ffoot-col">
+        <h4>Links</h4>
+        <a href="about.html">About</a>
+        <a href="https://youtube.com/@itz_FloppyFish" target="_blank">YouTube</a>
+        <a href="https://discord.gg/x5JTWtwgh3" target="_blank">Discord</a>
+      </div>
+    </div>
+  </div>
+  <div class="ffoot-bottom-bar">
+    <div class="ffoot-bot-left">
+      <span>&#169; 2026 Itz_FloppyFish. All rights reserved.</span>
+      <span class="ffoot-sep">&#183;</span>
+      <span>Not affiliated with Roblox Corporation.</span>
+    </div>
+    <div class="ffoot-bot-right">v3.0.0</div>
+  </div>
+</footer>
+
+</div><!-- /ff-wrap-inner -->
+
+<script src="js/main.js"></script>
+<script>
+const COMMENTS=[
+  {t:"This tutorial finally made DataStores click for me. Spent weeks struggling then watched this once.",a:"@DevStar_Roblox",s:5},
+  {t:"Best Roblox tutorial channel on YouTube. Clear, practical, no fluff. Exactly what I needed.",a:"@ScriptKid_Paul",s:5},
+  {t:"Made my first complete game thanks to this channel. The inventory tutorial alone is worth subscribing for.",a:"@RobloxBuilder22",s:5},
+  {t:"The premium systems are insane value. Saves me days of work and the code quality is production level.",a:"@GameDevMike",s:5},
+  {t:"I've watched 50+ tutorials. The explanations are genuinely the clearest I've found anywhere.",a:"@LuaLearner",s:5},
+  {t:"Finally understand how OrderedDataStore works for leaderboards. This channel is underrated.",a:"@RbxProDev",s:5},
+  {t:"Bought the item shop premium. Saved me at least a week of debugging. Absolutely worth it.",a:"@SimGameDev",s:5},
+  {t:"The free version works great in tutorials. Premium is even better — totally worth the upgrade.",a:"@DevFlux_Rb",s:5}
+];
+
+const FEATURED=[
+  {name:"Item Shop System",cat:"Economy",desc:"Full in-game shop with categories, item previews, buy confirmations, and transaction history.",href:"systems/item-shop.html",hasFree:true,hasPrem:true,pr:"$4.99"}
+];
+
+// Render comments
+(function(){
+  const d=[...COMMENTS,...COMMENTS];
+  document.getElementById('ffct').innerHTML=d.map(c=>`<div class="ffcmt"><div class="ffcmt-stars">${'&#9733;'.repeat(c.s)}</div><div class="ffcmt-txt">"${c.t}"</div><div class="ffcmt-who"><span>${c.a}</span> &#183; YouTube</div></div>`).join('');
+})();
+
+// Render featured cards
+(function(){
+  const el=document.getElementById('ff-feat');
+  el.innerHTML=FEATURED.map(s=>`
+    <a href="${s.href}" class="ff-card fffade">
+      <div class="ff-ct">
+        <div class="ff-ct-bg" style="background:linear-gradient(135deg,#0d1422,#162235)"></div>
+        <div style="font-size:42px;opacity:0.4;position:relative;z-index:1;">🏪</div>
+        <div class="ff-ct-ov"></div>
+      </div>
+      <div class="ff-cb">
+        <div class="ff-pills">
+          <span class="ff-pill ff-pill-cat">${s.cat}</span>
+          ${s.hasFree?'<span class="ff-pill ff-pill-free">Free</span>':''}
+          ${s.hasPrem?'<span class="ff-pill ff-pill-prem">&#x26A1; Premium</span>':''}
+        </div>
+        <div class="ff-cn">${s.name}</div>
+        <div class="ff-cd">${s.desc}</div>
+        <div class="ff-ca">
+          <span class="ff-ca-btn ff-ca-view">View System &#8594;</span>
+        </div>
+      </div>
+    </a>
+  `).join('');
+  ffFI();
+})();
+</script>
+</body>
+</html>
