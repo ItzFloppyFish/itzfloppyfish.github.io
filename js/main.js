@@ -72,14 +72,19 @@ document.addEventListener('DOMContentLoaded',ffInitCounters);
 
 // === NAV ACTIVE STATE ===
 document.addEventListener('DOMContentLoaded',function(){
-  const path=window.location.pathname;
+  // Normalise current path: strip trailing slash (except root), drop any index.html
+  let path=window.location.pathname.replace(/index\.html$/,'').replace(/\/+$/,'');
+  if(path==='')path='/';
   document.querySelectorAll('.ffnl').forEach(l=>{
     l.classList.remove('on');
-    const href=l.getAttribute('href');
+    let href=l.getAttribute('href');
     if(!href)return;
-    if(path.endsWith('index.html')||path==='/'||path.endsWith('/')){
-      if(href==='index.html'||href==='/index.html')l.classList.add('on');
-    } else if(href&&path.includes(href.replace('.html',''))){
+    // Normalise the link's href the same way
+    href=href.replace(/index\.html$/,'').replace(/\/+$/,'');
+    if(href==='')href='/';
+    if(href==='/'){
+      if(path==='/')l.classList.add('on');
+    } else if(path===href||path.startsWith(href+'/')){
       l.classList.add('on');
     }
   });
