@@ -5,7 +5,7 @@
   --bl:#2878ff;--cy:#00d4ff;--ac:#ff6b2b;
   --tx:#e8f0ff;--t2:#b0c8e8;--t3:#4d6a96;
   --br:rgba(40,120,255,0.15);--br2:rgba(40,120,255,0.3);
-  --f:'Outfit',sans-serif;--fm:'JetBrains Mono',monospace;
+  --f:'Outfit',sans-serif;--fh:'Space Grotesk',sans-serif;--fm:'JetBrains Mono',monospace;
 }
 html{scroll-behavior:smooth;}
 body{font-family:var(--f);background:var(--bg);color:var(--tx);overflow-x:hidden;min-height:100vh;-webkit-font-smoothing:antialiased;}
@@ -16,7 +16,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);overflow-x:hidden
 .ff-wrap-inner{position:relative;z-index:2;}
 
 /* TYPOGRAPHY */
-h1,h2,h3,h4,h5,h6{color:var(--tx);font-family:var(--f);}
+h1,h2,h3,h4,h5,h6{color:var(--tx);font-family:var(--fh);letter-spacing:-0.01em;}
 p{color:var(--t2);font-family:var(--f);}
 a{text-decoration:none;}
 
@@ -148,3 +148,20 @@ a{text-decoration:none;}
 .ffform-status.ok{color:#4ade80;}
 .ffform-status.err{color:#ff6b6b;}
 @media(max-width:760px){.ffcontact-grid{grid-template-columns:1fr;}}
+
+/* === INLINE ICONS (Lucide, self-hosted) === */
+/* Safe global default — no icon can ever balloon. Inherits text color. */
+svg.ffic{width:18px;height:18px;vertical-align:-0.18em;flex-shrink:0;display:inline-block;}
+/* Stat row icons */
+.ffstat svg.ffic{width:24px;height:24px;color:var(--bl);}
+/* About page card icons */
+.ffab-card-icon svg.ffic{width:30px;height:30px;color:var(--bl);}
+/* Hero / detail-hero large icons */
+.ffdtl-hero-icon svg.ffic,svg.ffic.hero-ic{width:42px;height:42px;}
+/* Comparison table check / cross */
+.ffcmp td svg.ffic{width:18px;height:18px;vertical-align:middle;}
+.ffcmp td.yes svg.ffic,.ffcmp td.pv.yes svg.ffic{color:#4ade80;}
+.ffcmp td.no svg.ffic{color:var(--t3);}
+.ffcmp td.pv svg.ffic{color:#fbbf24;}
+/* Feature-list small checks keep their inline color via style attr */
+.ff-prev-f svg.ffic{width:14px;height:14px;margin-top:1px;flex-shrink:0;}

@@ -124,9 +124,16 @@ No embed script needed. Users click → land on Payhip checkout → buy and down
   hasFree: true,
   hasPrem: true,
   pr: "$4.99",
-  icon: "♻️"
+  icon: "coins"
 }
 ```
+
+> **Icons:** `icon` is now a named icon (not an emoji). The card uses an inline
+> icon from the `FFICONS` map near the top of the `<script>` in `systems/index.html`.
+> Built-in names: `store`, `package`, `coins`, `zap`. To use a different icon,
+> grab the inner `<path>` markup from lucide.dev (search the icon, "Copy SVG"),
+> add it to `FFICONS` as `iconname:'<path .../>'`, then set `icon:"iconname"`.
+> If you don't recognise the name, it falls back to the `package` icon.
 
 5. **Add it to `index.html`** if you want it in the featured section (optional — keep featured to 3 max)
 6. **Add it to the footer** of `index.html` under the Systems column
@@ -141,7 +148,7 @@ Replace the placeholder icon in `ffdtl-hero` with a real screenshot:
 ```html
 <!-- Find this in systems/item-shop.html: -->
 <div class="ffdtl-hero">
-  <div class="ffdtl-hero-icon">🏪</div>
+  <div class="ffdtl-hero-icon"><svg class="ffic" ...>...</svg></div>
 </div>
 
 <!-- Replace with: -->
