@@ -1,11 +1,11 @@
-/* === FLOPPY FISH — MAIN STYLES === */
+/* === FLOPPY FISH - MAIN STYLES === */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --bg:#050a14;--s:#0f1e35;--s2:#142544;--b3:#0d1829;
   --bl:#2878ff;--cy:#00d4ff;--ac:#ff6b2b;
   --tx:#e8f0ff;--t2:#b0c8e8;--t3:#4d6a96;
   --br:rgba(40,120,255,0.15);--br2:rgba(40,120,255,0.3);
-  --f:'Outfit',sans-serif;--fh:'Space Grotesk',sans-serif;--fm:'JetBrains Mono',monospace;
+  --f:'Outfit',sans-serif;--fh:'Fraunces',serif;--fm:'JetBrains Mono',monospace;
 }
 html{scroll-behavior:smooth;}
 body{font-family:var(--f);background:var(--bg);color:var(--tx);overflow-x:hidden;min-height:100vh;-webkit-font-smoothing:antialiased;}
@@ -16,7 +16,7 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);overflow-x:hidden
 .ff-wrap-inner{position:relative;z-index:2;}
 
 /* TYPOGRAPHY */
-h1,h2,h3,h4,h5,h6{color:var(--tx);font-family:var(--fh);letter-spacing:-0.01em;}
+h1,h2,h3,h4,h5,h6{color:var(--tx);font-family:var(--fh);letter-spacing:-0.005em;}
 p{color:var(--t2);font-family:var(--f);}
 a{text-decoration:none;}
 
@@ -150,7 +150,7 @@ a{text-decoration:none;}
 @media(max-width:760px){.ffcontact-grid{grid-template-columns:1fr;}}
 
 /* === INLINE ICONS (Lucide, self-hosted) === */
-/* Safe global default — no icon can ever balloon. Inherits text color. */
+/* Safe global default - no icon can ever balloon. Inherits text color. */
 svg.ffic{width:18px;height:18px;vertical-align:-0.18em;flex-shrink:0;display:inline-block;}
 /* Stat row icons */
 .ffstat svg.ffic{width:24px;height:24px;color:var(--bl);}

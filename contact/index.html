@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ViralTemplates/viral-templates-assets/refs/heads/main/YouTube_Profile_Picture.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Itz_FloppyFish</title>
-<meta name="description" content="Get in touch with Itz_FloppyFish — questions, support, or business enquiries.">
+<title>Contact | Itz_FloppyFish</title>
+<meta name="description" content="Get in touch with Itz_FloppyFish for questions, support, or business enquiries.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -41,7 +41,6 @@
 <!-- CONTACT -->
 <main class="ffcontact-wrap">
   <div class="fffade">
-    <span class="fflbl">Get In Touch</span>
     <h1 class="fftit">Contact</h1>
     <p class="ffsub" style="max-width:560px;margin-top:14px;">Got a question about a system, need support with a download, or want to talk business? Drop a message below or reach me on any platform.</p>
   </div>
@@ -109,7 +108,7 @@
 </div>
 <script src="/js/main.js"></script>
 <script>
-// Formspree AJAX submit — keeps user on-page, shows status
+// Formspree AJAX submit - keeps user on-page, shows status
 (function(){
   const form = document.getElementById('ffcontact-form');
   const status = document.getElementById('ffform-status');
@@ -119,7 +118,7 @@
     e.preventDefault();
     if(form.action.includes('YOUR_FORM_ID')){
       status.className = 'ffform-status err';
-      status.textContent = 'Form not configured yet — add your Formspree ID.';
+      status.textContent = 'Form not configured yet. Add your Formspree ID.';
       return;
     }
     btn.disabled = true;
@@ -133,7 +132,7 @@
       });
       if(res.ok){
         status.className = 'ffform-status ok';
-        status.textContent = 'Thanks — your message has been sent!';
+        status.textContent = 'Thanks, your message has been sent.';
         form.reset();
       } else {
         const data = await res.json().catch(()=>({}));

@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded',function(){
   const noHover = window.matchMedia('(hover: none)').matches;
   if(reduce || noHover) return;
 
-  // SVG path per platform — small, single-path glyphs
+  // SVG path per platform - small, single-path glyphs
   const ICONS = {
     youtube: '<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/>',
     discord: '<path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.4a18.3 18.3 0 0 1 4.3 1.4 16.6 16.6 0 0 0-12.9 0A18 18 0 0 1 10.7 3.4L10.5 3A19.7 19.7 0 0 0 5.6 4.4 20.4 20.4 0 0 0 2 18.3a19.9 19.9 0 0 0 6 3l.4-.6a13 13 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.7 12.7 0 0 1-2 1l.4.6a19.8 19.8 0 0 0 6-3 20.3 20.3 0 0 0-3.4-13.9zM9 15.3c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/>',
