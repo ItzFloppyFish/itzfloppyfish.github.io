@@ -24,6 +24,7 @@
 .ffcar-track{display:flex;width:100%;height:100%;transition:transform 0.5s ease;}
 .ffcar-slide{min-width:100%;height:100%;}
 .ffcar-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.ffcar-slide iframe{width:100%;height:100%;border:none;display:block;}
 .ffcar-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(5,10,20,0.6);border:1px solid var(--br2);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;transition:all 0.2s;backdrop-filter:blur(4px);}
 .ffcar-btn:hover{background:rgba(40,120,255,0.5);}
 .ffcar-btn.prev{left:14px;}
@@ -161,12 +162,11 @@
 
   <div class="ffdtl-tr">
     <div class="ffdtl-meta">
-      <span class="ff-pill ff-pill-cat">Economy</span>
       <span class="ff-pill ff-pill-free">Free</span>
       <span class="ff-pill ff-pill-prem"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;vertical-align:-2px;" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg> Premium</span>
     </div>
     <h1>Item Shop System</h1>
-    <p>A complete in-game shop for Roblox with category navigation, item preview modals, buy confirmation dialogs, and bundle support. Built to drop straight into any game.</p>
+    <p>A complete, ready-to-use in-game shop for Roblox. Categories, item previews, buy confirmations, and bundles all work out of the box, so you can drop it straight into your game and keep building.</p>
   </div>
 
   <!-- TWO-COLUMN LAYOUT -->
@@ -209,24 +209,19 @@
         </div>
       </div>
 
-      <!-- MEDIA: image carousel + tutorial video -->
+      <!-- MEDIA: images + video in one rotating frame -->
       <h2 class="ff-sect-h">Preview</h2>
       <div class="ffdtl-hero">
         <div class="ffcar" id="ffcar">
           <div class="ffcar-track" id="ffcarTrack"></div>
-          <button class="ffcar-btn prev" onclick="ffCarMove(-1)" aria-label="Previous image">
+          <button class="ffcar-btn prev" onclick="ffCarMove(-1)" aria-label="Previous">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
-          <button class="ffcar-btn next" onclick="ffCarMove(1)" aria-label="Next image">
+          <button class="ffcar-btn next" onclick="ffCarMove(1)" aria-label="Next">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
           </button>
           <div class="ffcar-dots" id="ffcarDots"></div>
         </div>
-      </div>
-
-      <!-- VIDEO EMBED -->
-      <div class="ff-vemb">
-        <iframe src="https://www.youtube.com/embed/W4TD81WCRQc" title="Item Shop System tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
 
       <!-- COMPARISON TABLE -->
@@ -245,7 +240,6 @@
           <tr><td>Sale timers</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
           <tr><td>Animated UI + tweening</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
           <tr><td>Mobile / all-device support</td><td class="yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td><td class="pv yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
-          <tr><td>Server-side validation</td><td>Basic</td><td class="pv">Full</td></tr>
           <tr><td>Purchase notifications (Discord webhooks)</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
         </tbody>
       </table>
@@ -290,13 +284,14 @@
 // PRODUCT CONFIG - edit these values for this system
 // ============================================================
 // ============================================================
-// IMAGE GALLERY - add as many image paths as you like.
-// One image = static. Multiple = auto-rotating carousel with arrows + dots.
-// Use 1920x1080 (16:9) images for a perfect fit.
-const GALLERY = [
-  "../../images/ItemShop.jpg"
-  // ,"../../images/ItemShop2.jpg"
-  // ,"../../images/ItemShop3.jpg"
+// MEDIA GALLERY - images and video in one rotating frame.
+// type "image" = a screenshot (use 1920x1080 / 16:9).
+// type "video" = a YouTube video ID.
+// Reorder, add, or remove items freely.
+const MEDIA = [
+  { type:"image", src:"../../images/ItemShop.jpg" },
+  { type:"video", id:"W4TD81WCRQc" }
+  // ,{ type:"image", src:"../../images/ItemShop2.jpg" }
 ];
 // ============================================================
 
@@ -339,12 +334,11 @@ function ffBT(m) {
   if (m === 'free') {
     bc.innerHTML = `
       <div class="ff-pr-row"><span class="ff-pr-free">Free</span></div>
-      <div class="ff-pr-note">Download via Payhip &nbsp;&#183;&nbsp; Free forever</div>
+      <div class="ff-pr-note">Free forever &nbsp;&#183;&nbsp; Instant download</div>
       <a href="https://payhip.com/buy?link=${PRODUCT.freeKey}"
          class="ff-btn-dl-free"
          target="_blank" rel="noopener">
-        <svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></svg>&nbsp; Download Free Version
-      </a>`;
+        <svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></svg>&nbsp; Download</a>`;
     bf.innerHTML = `<div class="ff-buy-fl">Includes</div>` +
       PRODUCT.freeFeatures.map(f =>
         `<div class="ff-buy-fi"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px;color:#4ade80;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> ${f}</div>`
@@ -374,21 +368,25 @@ function ffBT(m) {
       ).join('');
   }
 }
-// ===== IMAGE CAROUSEL =====
+// ===== MEDIA CAROUSEL (images + video) =====
 let ffCarIdx = 0;
 let ffCarTimer = null;
+function ffCarSlide(m){
+  if(m.type === "video"){
+    return `<div class="ffcar-slide"><iframe src="https://www.youtube.com/embed/${m.id}" title="Tutorial video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+  }
+  return `<div class="ffcar-slide"><img src="${m.src}" alt="Item Shop System preview" loading="lazy"></div>`;
+}
 function ffCarRender(){
   const track = document.getElementById('ffcarTrack');
   const dots = document.getElementById('ffcarDots');
   const car = document.getElementById('ffcar');
   if(!track) return;
-  track.innerHTML = GALLERY.map(src =>
-    `<div class="ffcar-slide"><img src="${src}" alt="Item Shop System preview" loading="lazy"></div>`
+  track.innerHTML = MEDIA.map(ffCarSlide).join('');
+  dots.innerHTML = MEDIA.map((m,i) =>
+    `<button class="ffcar-dot${i===0?' act':''}" onclick="ffCarGo(${i})" aria-label="${m.type==='video'?'Video':'Image '+(i+1)}"></button>`
   ).join('');
-  dots.innerHTML = GALLERY.map((_,i) =>
-    `<button class="ffcar-dot${i===0?' act':''}" onclick="ffCarGo(${i})" aria-label="Image ${i+1}"></button>`
-  ).join('');
-  if(GALLERY.length <= 1){ car.classList.add('ffcar-single'); }
+  if(MEDIA.length <= 1){ car.classList.add('ffcar-single'); }
   else { ffCarAuto(); }
 }
 function ffCarUpdate(){
@@ -397,14 +395,21 @@ function ffCarUpdate(){
   document.querySelectorAll('.ffcar-dot').forEach((d,i)=>d.classList.toggle('act',i===ffCarIdx));
 }
 function ffCarMove(dir){
-  ffCarIdx = (ffCarIdx + dir + GALLERY.length) % GALLERY.length;
+  ffCarIdx = (ffCarIdx + dir + MEDIA.length) % MEDIA.length;
   ffCarUpdate(); ffCarAuto();
 }
 function ffCarGo(i){ ffCarIdx = i; ffCarUpdate(); ffCarAuto(); }
 function ffCarAuto(){
-  if(GALLERY.length <= 1) return;
+  if(MEDIA.length <= 1) return;
   clearInterval(ffCarTimer);
-  ffCarTimer = setInterval(()=>{ ffCarIdx=(ffCarIdx+1)%GALLERY.length; ffCarUpdate(); }, 5000);
+  // Don't auto-advance while a video slide is showing (let people watch).
+  if(MEDIA[ffCarIdx] && MEDIA[ffCarIdx].type === "video") return;
+  ffCarTimer = setInterval(()=>{
+    ffCarIdx = (ffCarIdx+1) % MEDIA.length;
+    ffCarUpdate();
+    // stop the timer if we land on the video
+    if(MEDIA[ffCarIdx] && MEDIA[ffCarIdx].type === "video") clearInterval(ffCarTimer);
+  }, 5000);
 }
 document.addEventListener('DOMContentLoaded', ffCarRender);
 
