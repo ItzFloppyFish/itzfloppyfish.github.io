@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../images/YouTube%20Profile%20Picture.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Itz_FloppyFish</title>
+<meta name="description" content="About Itz_FloppyFish, a Roblox developer and educator sharing systems and tutorials.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css">
+<style>
+.ffabout-pg{padding:140px 24px 80px;max-width:960px;margin:0 auto;}
+.ffab-hero{display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start;margin-bottom:80px;}
+.ffav{width:240px;height:240px;border-radius:50%;border:2px solid rgba(40,120,255,0.35);overflow:hidden;box-shadow:0 0 60px rgba(40,120,255,0.2);}
+.ffav img{width:100%;height:100%;object-fit:cover;display:block;}
+.ffab-hero h1{font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-2px;margin-bottom:16px;line-height:1.05;}
+.ffab-hero p{color:var(--t2);line-height:1.75;margin-bottom:16px;font-size:15px;}
+.ffab-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+
+.ffab-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:64px;}
+.ffab-card{background:var(--s);border:1px solid var(--br);border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;transition:all 0.3s;}
+.ffab-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--bl),transparent);}
+.ffab-card:hover{border-color:var(--br2);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.4);}
+.ffab-card-icon{font-size:28px;margin-bottom:16px;}
+.ffab-card h3{font-size:18px;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px;}
+.ffab-card p{color:var(--t2);font-size:14px;line-height:1.6;}
+
+.ffab-list-sect{margin-bottom:64px;}
+.ffab-list-sect h2{font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:24px;}
+.ffab-list{list-style:none;}
+.ffab-list li{display:flex;align-items:flex-start;gap:12px;padding:14px 0;color:var(--t2);font-size:15px;border-bottom:1px solid rgba(40,120,255,0.1);line-height:1.6;}
+.ffab-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--bl);flex-shrink:0;margin-top:8px;}
+
+@media(max-width:900px){.ffab-hero{grid-template-columns:1fr;}.ffav{width:160px;height:160px;}.ffab-cards{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.ffab-cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="ff-grid-bg"></div>
+<canvas id="ff-cv"></canvas>
+<div class="ff-wrap-inner">
+
+<!-- NAV -->
+<nav class="ffnav" id="ffnav">
+  <div class="ffnav-i">
+    <a href="/" class="fflogo">
+      <img src="../images/YouTube%20Profile%20Picture.png" class="fflogo-img" alt="Itz_FloppyFish" onerror="this.style.display='none';document.getElementById('fflf').style.display='flex'">
+      <div class="fflogo-fb" id="fflf">FF</div>
+      <span class="fflogo-txt">Itz_FloppyFish</span>
+    </a>
+    <div class="ffnav-links">
+      <a class="ffnl" href="/">Home</a>
+      <a class="ffnl" href="/systems/">Systems</a>
+      <a class="ffnl on" href="/about/">About</a>
+      <a class="ffnl" href="/contact/">Contact</a>
+    </div>
+    <div class="ffnav-r">
+      <a href="https://payhip.com/auth/login" target="_blank" class="ff-ibtn" title="My Downloads">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </a>
+      <a href="/systems/" class="ff-btn-pr">Browse Systems <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ABOUT -->
+<main class="ffabout-pg">
+  <div class="ffab-hero fffade">
+    <div>
+      <div class="ffav">
+        <img src="../images/YouTube%20Profile%20Picture.png" alt="Itz_FloppyFish">
+      </div>
+    </div>
+    <div>
+      <h1>Hey, I'm<br>Itz_FloppyFish</h1>
+      <p>I've been making Roblox tutorials on YouTube for over five years. In that time I've come to understand what developers really want, which is efficiency. The longer you spend building something from scratch, the longer your project takes, and the longer it takes to start earning anything from it.</p>
+      <p>That's the gap I try to fill. I take pride in making high-quality tutorials covering systems you can integrate into your own game without fighting it, so you spend less time wiring up the basics and more time building the game you actually set out to make.</p>
+      <div class="ffab-btns">
+        <a href="https://youtube.com/@itz_FloppyFish" target="_blank" class="ff-btn-lg">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          YouTube Channel
+        </a>
+        <a href="https://discord.gg/x5JTWtwgh3" target="_blank" class="ff-btn-gh">Discord</a>
+        <a href="/systems/" class="ff-btn-gh">Browse Systems</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ffab-cards">
+    <div class="ffab-card fffade">
+      <div class="ffab-card-icon"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4" /> <path d="M16 2v4" /> <rect width="18" height="18" x="3" y="4" rx="2" /> <path d="M3 10h18" /></svg></div>
+      <h3>7+ Years on Roblox</h3>
+      <p>Started building on the platform in 2017. Seen the engine evolve through every major change.</p>
+    </div>
+    <div class="ffab-card fffade">
+      <div class="ffab-card-icon"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /> <path d="M22 10v6" /> <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></svg></div>
+      <h3>5+ Years Teaching</h3>
+      <p>Over 300 tutorial videos explaining Roblox development from beginner to production level.</p>
+    </div>
+    <div class="ffab-card fffade">
+      <div class="ffab-card-icon"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /> <path d="M12 22V12" /> <polyline points="3.29 7 12 12 20.71 7" /> <path d="m7.5 4.27 9 5.15" /></svg></div>
+      <h3>Active Creator</h3>
+      <p>A real, growing YouTube channel and Discord community, not a faceless store. New systems and tutorials land regularly.</p>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="ffoot">
+  <div class="ffoot-bottom-bar">
+    <div class="ffoot-bot-left">
+      <span>&#169; 2026 Itz_FloppyFish. All rights reserved.</span>
+      <span class="ffoot-sep">&#183;</span>
+      <span>Not affiliated with Roblox Corporation.</span>
+    </div>
+    <div class="ffoot-bot-right">v3.0.0</div>
+  </div>
+</footer>
+
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
