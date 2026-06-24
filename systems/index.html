@@ -104,7 +104,8 @@ const SYSTEMS=[
     hasFree:true,
     hasPrem:true,
     pr:"$4.99",
-    icon:"store"
+    icon:"store",
+    img:"../images/ItemShop.jpg"
   }
   // ADD MORE SYSTEMS HERE - just copy the block above
 ];
@@ -127,8 +128,10 @@ function ffIcon(name,sz){
 function ffCard(s){
   return`<a href="${s.href}" class="ff-card fffade">
     <div class="ff-ct">
-      <div class="ff-ct-bg" style="background:linear-gradient(135deg,#0d1422,#162235)"></div>
-      <div style="opacity:0.4;position:relative;z-index:1;color:var(--tx);">${ffIcon(s.icon,42)}</div>
+      ${s.img
+        ? `<img src="${s.img}" alt="${s.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">`
+        : `<div class="ff-ct-bg" style="background:linear-gradient(135deg,#0d1422,#162235)"></div>
+      <div style="opacity:0.4;position:relative;z-index:1;color:var(--tx);">${ffIcon(s.icon,42)}</div>`}
       <div class="ff-ct-ov"></div>
     </div>
     <div class="ff-cb">

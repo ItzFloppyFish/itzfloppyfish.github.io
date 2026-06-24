@@ -22,7 +22,7 @@ a{text-decoration:none;}
 
 /* LAYOUT */
 .ffwrap{max-width:1200px;margin:0 auto;padding:0 24px;}
-.fflbl{display:block;font-family:var(--fh);font-size:12px;font-weight:600;letter-spacing:2px;color:var(--bl);text-transform:uppercase;margin-bottom:12px;}
+.fflbl{display:block;font-family:var(--f);font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--bl);text-transform:uppercase;margin-bottom:12px;}
 .fftit{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-1.5px;color:var(--tx);line-height:1.1;}
 .ffsub{color:var(--t2);font-size:16px;line-height:1.6;font-weight:400;}
 .ffdiv{height:1px;background:linear-gradient(90deg,transparent,rgba(40,120,255,0.3),transparent);margin:0 24px;}
@@ -32,7 +32,7 @@ a{text-decoration:none;}
 
 /* PILLS */
 .ff-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
-.ff-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:5px;font-family:var(--fh);font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;line-height:1;}
+.ff-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:5px;font-family:var(--f);font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;line-height:1;}
 .ff-pill-cat{background:rgba(255,255,255,0.05);color:#7a9cc0;border:1px solid rgba(255,255,255,0.09);}
 .ff-pill-free{background:rgba(34,197,94,0.1);color:#4ade80;border:1px solid rgba(34,197,94,0.2);}
 .ff-pill-free::before{content:'';width:5px;height:5px;border-radius:50%;background:#4ade80;display:inline-block;flex-shrink:0;}
@@ -89,7 +89,7 @@ a{text-decoration:none;}
 .ffoot-yt{width:36px;height:36px;background:var(--s);border:1px solid var(--br);border-radius:9px;display:inline-flex;align-items:center;justify-content:center;color:var(--t2);text-decoration:none;transition:all 0.2s;}
 .ffoot-yt:hover{background:rgba(255,0,0,0.1);border-color:rgba(255,0,0,0.35);color:#ff4444;}
 .ffoot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
-.ffoot-col h4{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--t3);margin-bottom:16px;font-family:var(--fh);}
+.ffoot-col h4{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--t3);margin-bottom:16px;font-family:var(--f);}
 .ffoot-col a{display:block;color:var(--t2);font-size:13px;margin-bottom:10px;transition:color 0.2s;cursor:pointer;text-decoration:none;}
 .ffoot-col a:hover{color:var(--tx);}
 .ffoot-bottom-bar{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:20px 0 28px;flex-wrap:wrap;gap:12px;}
@@ -125,7 +125,7 @@ a{text-decoration:none;}
 .ffcontact-card h3{font-size:18px;font-weight:700;margin-bottom:6px;letter-spacing:-0.3px;}
 .ffcontact-card .ffsub{font-size:14px;margin-bottom:24px;}
 .fffield{margin-bottom:18px;}
-.fffield label{display:block;font-family:var(--fh);font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--t3);margin-bottom:8px;}
+.fffield label{display:block;font-family:var(--f);font-size:11px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--t3);margin-bottom:8px;}
 .fffield input,.fffield textarea{width:100%;background:var(--b3);border:1px solid var(--br);border-radius:10px;padding:13px 15px;color:var(--tx);font-family:var(--f);font-size:14px;transition:all 0.2s;resize:vertical;}
 .fffield input:focus,.fffield textarea:focus{outline:none;border-color:var(--br2);box-shadow:0 0 0 3px rgba(40,120,255,0.12);background:#0a1320;}
 .fffield input::placeholder,.fffield textarea::placeholder{color:var(--t3);}
