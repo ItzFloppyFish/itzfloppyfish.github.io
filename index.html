@@ -219,24 +219,87 @@
 <script src="/js/main.js"></script>
 <script>
 const COMMENTS=[
-  {t:"This tutorial finally made DataStores click for me. Spent weeks struggling then watched this once.",a:"@DevStar_Roblox",s:5},
-  {t:"Best Roblox tutorial channel on YouTube. Clear, practical, no fluff. Exactly what I needed.",a:"@ScriptKid_Paul",s:5},
-  {t:"Made my first complete game thanks to this channel. The inventory tutorial alone is worth subscribing for.",a:"@RobloxBuilder22",s:5},
-  {t:"The premium systems are insane value. Saves me days of work and the code quality is production level.",a:"@GameDevMike",s:5},
-  {t:"I've watched 50+ tutorials. The explanations are genuinely the clearest I've found anywhere.",a:"@LuaLearner",s:5},
-  {t:"Finally understand how OrderedDataStore works for leaderboards. This channel is underrated.",a:"@RbxProDev",s:5},
-  {t:"Bought the item shop premium. Saved me at least a week of debugging. Absolutely worth it.",a:"@SimGameDev",s:5},
-  {t:"The free version works great in tutorials, and premium is even better. Totally worth the upgrade.",a:"@DevFlux_Rb",s:5}
+  {t:`Dude thank you so much. I'm just a normal developer who can't exactly code and this tutorial really helped me make one of the BIGGEST projects I have ever made. Hats off to you homie.`,a:"@TheOneAndOnlySubby",w:3},
+  {t:`thank you soo much omg im trying to make a game and all the play gui tutorials were either too complicated and long or just flat out didnt work. this saved my life`,a:"@TR1SHA",w:3},
+  {t:`dude you just saved a whole 2 weeks of my life by writing the script thank you so much!`,a:"@EmmaCarmody-zi4bc",w:3},
+  {t:`Me and my friend are making a zombie border game and this helped so much! you explained it to us in depth so if we ever learn Lua, we can learn from you`,a:"@Meowsterful",w:3},
+  {t:`your actaually the best ever this actually works unlike other tutorials and its so customizable and just amazing thank you so much`,a:"@KingProdigyDragon",w:3},
+  {t:`Amazing video, This really helped me out, I started today and I almost have a game ready, looks really nice with the GUI'S <3`,a:"@TDK507",w:3},
+  {t:`Your the goat man, putting your scripts on the discription saves me ALOT of time man. Thank you som much`,a:"@blast_processin",w:3},
+  {t:`excellent explanation who clearly conveys the contents. In addition, he included script specifics in his descriptions! fantastic video`,a:"@rockinbalencis6930",w:3},
+  {t:`This was so helpful I have been trying to make a menu screen for years but I never could. You just earnt yourself a new subscriber!`,a:"@BobAnderson-s4g",w:3},
+  {t:`omg tysm this was literally the first successful thing i made in roblox studio after researching online for like 5 days lol.`,a:"@Jaguuu-i7g",w:3},
+  {t:`DUDE THANK YOU SO MUCHH FOR TELLING US YOU ARE THE BEST AND IT ALSO WORKS YOU JUST TURNED A 1WEEK WORK INTO JUST 16MINS!!!`,a:"@OfficialUmar_Pro",w:3},
+  {t:`hey floppy ik this was made 2 years ago and you wont see this but me and my friends are working on a hotel game and ive added you in the credits`,a:"@Electrikmilk2",w:3},
+  {t:`Thank you so much dude this made me understand it very clearly and it works great for a game im making called OUTBREAK.`,a:"@FatMarkiplier",w:3},
+  {t:`YOU DONT EVEN UNDERSTAND HOW MUCH THIS HELPED ME. THANK YOU!!`,a:"@ameliasaep",w:2},
+  {t:`YO my guy this is so good worked perfectly YOU JUST EARNED A NEW SUB!!!`,a:"@ThePuppet3000",w:2},
+  {t:`your one of the only people that i can trust their tutorials thank you!`,a:"@levelupgaming-true",w:2},
+  {t:`thank you very much every video i would watch would just never work this is the only video that worked`,a:"@starplayz1600",w:2},
+  {t:`usually i just get the tutorial done with and leave, but this actually helped sm. you just earned a like and sub`,a:"@acewasjay",w:2},
+  {t:`This helped me so much with my game! You are so underrated!! I'm subscribing rn!!`,a:"@SCPULTIMATEROLEPLAY",w:2},
+  {t:`This was a massive help. Me and my friend are making a game and this was a big life saver.`,a:"@RAWRRATRAT",w:2},
+  {t:`Bro thank you so much it didn't work at first so I was about to cut it and I tried it one more time AND IT WORKED TYSM YOUR THE BEST ROBLOX TUTORIAL YOUTUBER!!!!!`,a:"@lynchbros9953",w:2},
+  {t:`I started watching you today, I'm making a rpg type game (solo dev)... IT HELPED ME SOO MUCH TY. You earned a sub!`,a:"@A23PlayzBMGO",w:2},
+  {t:`THANK YOU SO MUCH YOU GOT A SUB THIS IS THE ONLY ONE THAT WORKS`,a:"@SnapFizzNation",w:2},
+  {t:`Till now this still works, I love it, one of the best scripts i've found yet`,a:"@Rapidgambler",w:2},
+  {t:`thank you so much u saved my life this still works in 2025 i recommend`,a:"@Flufffydoesstuff",w:2},
+  {t:`dude, tysm man im making my first game and its looking so good bcus of ur help`,a:"@xiri-123",w:2},
+  {t:`Studio tutorials never work, this one did, thanks so much`,a:"@uwucatsim",w:2},
+  {t:`THIS IS SO EASY TO UNDERSTAND! THANK YOU SO MUCH, YOU HELPT ME OUT ALOT!`,a:"@linkancpvp",w:2},
+  {t:`Omg thank you so much bro so useful most underrated YouTuber ever`,a:"@MrSideQuester",w:2},
+  {t:`Dude, this REALLY helped me so much bro, now i can be a developer, KEEP IT UP man!!!`,a:"@M4RK-M",w:2},
+  {t:`me and bro are making a game and this helped SO MUCH`,a:"@penguingaming3985",w:1},
+  {t:`THANK YOUU SO MUCH!!! BEST TUTORIAL I FOUND!`,a:"@JrCracker",w:1},
+  {t:`YOO thank you so much, it works so well im freaking out rn`,a:"@fireball-555",w:1},
+  {t:`The ONLY guide that helped me with the script out of all videos`,a:"@Spynosurname",w:1},
+  {t:`thank you bro, ive been tryna find the right video and this helped alot!`,a:"@Silver_Soul22",w:1},
+  {t:`ty so much bro i needed that tuto for my game! continue like that.`,a:"@sulaakk",w:1},
+  {t:`Hey man this is so cool! All working, thank you very much.`,a:"@T1Gn1hJJ",w:1},
+  {t:`Thank you so much this helped me a lot. Your the top G bro and you definitely earned a new sub! Keep doing what you do!`,a:"@Vickyg1727",w:2},
+  {t:`been over 2 years since I watched your videos im glad to see that you are still fine`,a:"@Thelaspeachy",w:1},
+  {t:`YOU ARE A LIFESAVER, THANK YOU!!!!!!!`,a:"@RuhaanGawde",w:1},
+  {t:`YOU ARE A LEGEND!!`,a:"@Egged12",w:1},
+  {t:`This worked so well thank you so much`,a:"@RFGVR",w:1},
+  {t:`Thanks so much! it works really good`,a:"@TheNEOPSYCHO",w:1},
+  {t:`Thank you so much seriously this is awesome`,a:"@RapidVisionYT",w:1},
+  {t:`Helped me man thank you`,a:"@kaka-q8n3t",w:1},
+  {t:`you're one of the only people that i can trust their tutorials thank you!`,a:"@levelupgaming-true2",w:1}
 ];
 
 const FEATURED=[
   {name:"Item Shop System",cat:"Economy",desc:"Full in-game shop with categories, item previews, buy confirmations, and transaction history.",href:"/systems/item-shop/",hasFree:true,hasPrem:true,pr:"$4.99",img:"images/ItemShop.jpg"}
 ];
 
-// Render comments
+// Render comments - weighted shuffle, no close repeats
 (function(){
-  const d=[...COMMENTS,...COMMENTS];
-  document.getElementById('ffct').innerHTML=d.map(c=>`<div class="ffcmt"><div class="ffcmt-stars">${'&#9733;'.repeat(c.s)}</div><div class="ffcmt-txt">"${c.t}"</div><div class="ffcmt-who"><span>${c.a}</span> &#183; YouTube</div></div>`).join('');
+  // Build a weighted pool (better reviews appear more often)
+  const pool = [];
+  COMMENTS.forEach((c,i) => { for(let k=0;k<(c.w||1);k++) pool.push(i); });
+
+  // Fisher-Yates shuffle of the weighted pool
+  for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+
+  // Build a sequence that never repeats the same comment within a window
+  const WINDOW = 6;
+  const seq = [];
+  const remaining = [...pool];
+  while(remaining.length){
+    let pick = -1;
+    for(let i=0;i<remaining.length;i++){
+      if(!seq.slice(-WINDOW).includes(remaining[i])){ pick=i; break; }
+    }
+    if(pick===-1) pick=0; // fallback if everything left is in-window
+    seq.push(remaining[pick]);
+    remaining.splice(pick,1);
+  }
+
+  // Render the sequence twice for a seamless infinite scroll
+  const order = [...seq, ...seq];
+  document.getElementById('ffct').innerHTML = order.map(idx => {
+    const c = COMMENTS[idx];
+    return `<div class="ffcmt"><div class="ffcmt-stars">${'&#9733;'.repeat(5)}</div><div class="ffcmt-txt">"${c.t}"</div><div class="ffcmt-who"><span>${c.a}</span> &#183; YouTube</div></div>`;
+  }).join('');
 })();
 
 // Render featured cards
