@@ -7,7 +7,7 @@
 <title>Item Shop System | Itz_FloppyFish</title>
 <meta name="description" content="Full in-game Roblox shop system with categories, item previews, buy confirmations, and transaction history. Free tutorial version and premium production build.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css">
 <style>
 /* BREADCRUMB */
@@ -33,7 +33,7 @@
 .ffcar-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);cursor:pointer;transition:all 0.2s;border:none;padding:0;}
 .ffcar-dot.act{background:#fff;width:22px;border-radius:4px;}
 .ffcar-single .ffcar-btn,.ffcar-single .ffcar-dots{display:none;}
-.ffdtl-tr h1{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-2px;margin-bottom:10px;}
+.ffdtl-tr h1{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1px;margin-bottom:10px;font-family:var(--fhx);}
 .ffdtl-tr p{font-size:16px;color:var(--t2);line-height:1.7;}
 .ffdtl-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
 .ffdtl-cols{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start;margin-top:28px;}
@@ -48,6 +48,9 @@
 .ff-prev-ht.fr{color:#4ade80;}
 .ff-prev-ht.pm{color:#fbbf24;}
 .ff-prev-b{padding:13px 15px;}
+.ff-prev-lbl{font-size:11px;font-weight:700;font-family:var(--f);text-transform:uppercase;letter-spacing:0.08em;padding:11px 15px 0;}
+.ff-prev-lbl.fr{color:#4ade80;}
+.ff-prev-lbl.pm{color:#fbbf24;}
 .ff-prev-f{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;color:var(--t2);}
 .ff-prev-f:last-child{border-bottom:none;}
 .ff-prev-f .ck{color:#4ade80;font-size:11px;flex-shrink:0;margin-top:2px;}
@@ -81,9 +84,9 @@
 .ff-buy-tb.pm.act{background:rgba(251,191,36,0.18);border-color:rgba(251,191,36,0.5);box-shadow:0 0 12px rgba(251,191,36,0.15);}
 
 .ff-pr-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
-.ff-pr{font-size:38px;font-weight:900;color:var(--tx);font-family:var(--fm);}
-.ff-pr-orig{font-size:18px;color:var(--t3);text-decoration:line-through;font-family:var(--fm);}
-.ff-pr-free{font-size:38px;font-weight:900;color:#4ade80;font-family:var(--fm);}
+.ff-pr{font-size:38px;font-weight:900;color:var(--tx);font-family:var(--fhx);}
+.ff-pr-orig{font-size:18px;color:var(--t3);text-decoration:line-through;font-family:var(--fhx);}
+.ff-pr-free{font-size:38px;font-weight:900;color:#4ade80;font-family:var(--fhx);}
 .ff-pr-note{font-size:12px;color:var(--t3);margin-bottom:18px;}
 
 /* BUY BUTTONS - go to Payhip checkout */
@@ -153,18 +156,8 @@
 
 <!-- DETAIL -->
 <main class="ffdtl">
-  <!-- BREADCRUMB -->
-  <div class="ffcrumb">
-    <a href="/systems/">Systems</a>
-    <span>/</span>
-    Item Shop System
-  </div>
 
   <div class="ffdtl-tr">
-    <div class="ffdtl-meta">
-      <span class="ff-pill ff-pill-free">Free</span>
-      <span class="ff-pill ff-pill-prem"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;vertical-align:-2px;" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg> Premium</span>
-    </div>
     <h1>Item Shop System</h1>
     <p>A complete, ready-to-use in-game shop for Roblox. Categories, item previews, buy confirmations, and bundles all work out of the box, so you can drop it straight into your game and keep building.</p>
   </div>
@@ -180,10 +173,7 @@
       <div class="ff-prev-pp">
         <!-- FREE -->
         <div class="ff-prev-p">
-          <div class="ff-prev-h">
-            <svg width="13" height="13" fill="none" stroke="#4ade80" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span class="ff-prev-ht fr">Free Version</span>
-          </div>
+          <div class="ff-prev-lbl fr">Free</div>
           <div class="ff-prev-b">
             <div class="ff-prev-f"><svg class="ffic ck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Matches the tutorial exactly</div>
             <div class="ff-prev-f"><svg class="ffic ck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Easy to adjust and build on</div>
@@ -193,10 +183,7 @@
         </div>
         <!-- PREMIUM -->
         <div class="ff-prev-p pm">
-          <div class="ff-prev-h pm">
-            <span style="color:#fbbf24;"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg></span>
-            <span class="ff-prev-ht pm">Premium Version</span>
-          </div>
+          <div class="ff-prev-lbl pm">Premium</div>
           <div class="ff-prev-b">
             <div class="ff-prev-f"><svg class="ffic ck pm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Animated transitions and tweening</div>
             <div class="ff-prev-f"><svg class="ffic ck pm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Success effect (confetti)</div>
@@ -210,7 +197,6 @@
       </div>
 
       <!-- MEDIA: images + video in one rotating frame -->
-      <h2 class="ff-sect-h">Preview</h2>
       <div class="ffdtl-hero">
         <div class="ffcar" id="ffcar">
           <div class="ffcar-track" id="ffcarTrack"></div>
@@ -231,7 +217,7 @@
           <tr>
             <th>Feature</th>
             <th>Free</th>
-            <th class="pc"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px;" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg> Premium</th>
+            <th class="pc"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg> Premium</th>
           </tr>
         </thead>
         <tbody>
@@ -253,7 +239,7 @@
         <!-- TABS -->
         <div class="ff-buy-tabs">
           <button class="ff-buy-tb fr" id="fftbf" onclick="ffBT('free')">Free</button>
-          <button class="ff-buy-tb pm act" id="fftbp" onclick="ffBT('prem')"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px;" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg> Premium</button>
+          <button class="ff-buy-tb pm act" id="fftbp" onclick="ffBT('prem')"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg> Premium</button>
         </div>
 
         <!-- PANEL CONTENT (toggled by JS) -->
@@ -311,11 +297,11 @@ const PRODUCT = {
     "Drops straight into your game"
   ],
   premFeatures: [
+    "Premium styled UI",
+    "Optimised for all devices",
     "Animated transitions and tweening",
     "Success effect (confetti)",
     "Purchase history log via Discord webhooks",
-    "Premium styled UI",
-    "Optimised for all devices",
     "Priority support"
   ]
 };
@@ -354,7 +340,7 @@ function ffBT(m) {
       <a href="https://payhip.com/buy?link=${PRODUCT.premKey}"
          class="ff-btn-buy-prem"
          target="_blank" rel="noopener">
-        <svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg>&nbsp; Buy Premium · ${PRODUCT.premPrice}
+        <svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg>&nbsp; Buy Premium · ${PRODUCT.premPrice}
       </a>
       <a href="https://payhip.com/buy?link=${PRODUCT.freeKey}"
          class="ff-btn-dl-free"
@@ -364,7 +350,7 @@ function ffBT(m) {
       </a>`;
     bf.innerHTML = `<div class="ff-buy-fl">Premium Includes</div>` +
       PRODUCT.premFeatures.map(f =>
-        `<div class="ff-buy-fi"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px;color:#fbbf24;" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></svg> ${f}</div>`
+        `<div class="ff-buy-fi"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px;color:#fbbf24;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg> ${f}</div>`
       ).join('');
   }
 }
