@@ -7,7 +7,7 @@
 <title>Item Shop System | Itz_FloppyFish</title>
 <meta name="description" content="Full in-game Roblox shop system with categories, item previews, buy confirmations, and transaction history. Free tutorial version and premium production build.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css">
 <style>
 /* BREADCRUMB */
@@ -33,7 +33,7 @@
 .ffcar-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);cursor:pointer;transition:all 0.2s;border:none;padding:0;}
 .ffcar-dot.act{background:#fff;width:22px;border-radius:4px;}
 .ffcar-single .ffcar-btn,.ffcar-single .ffcar-dots{display:none;}
-.ffdtl-tr h1{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;font-family:var(--fh);}
+.ffdtl-tr h1{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1px;margin-bottom:10px;font-family:var(--fhx);}
 .ffdtl-tr p{font-size:16px;color:var(--t2);line-height:1.7;}
 .ffdtl-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
 .ffdtl-cols{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start;margin-top:28px;}
@@ -84,9 +84,9 @@
 .ff-buy-tb.pm.act{background:rgba(251,191,36,0.18);border-color:rgba(251,191,36,0.5);box-shadow:0 0 12px rgba(251,191,36,0.15);}
 
 .ff-pr-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
-.ff-pr{font-size:38px;font-weight:900;color:var(--tx);font-family:var(--fh);}
-.ff-pr-orig{font-size:18px;color:var(--t3);text-decoration:line-through;font-family:var(--fh);}
-.ff-pr-free{font-size:38px;font-weight:900;color:#4ade80;font-family:var(--fh);}
+.ff-pr{font-size:38px;font-weight:900;color:var(--tx);font-family:var(--fhx);}
+.ff-pr-orig{font-size:18px;color:var(--t3);text-decoration:line-through;font-family:var(--fhx);}
+.ff-pr-free{font-size:38px;font-weight:900;color:#4ade80;font-family:var(--fhx);}
 .ff-pr-note{font-size:12px;color:var(--t3);margin-bottom:18px;}
 
 /* BUY BUTTONS - go to Payhip checkout */
@@ -222,10 +222,10 @@
         </thead>
         <tbody>
           <tr><td>Interactable UI</td><td class="yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td><td class="pv yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
-          <tr><td>Mobile / all-device support</td><td class="yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td><td class="pv yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
           <tr><td>Category tabs</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
           <tr><td>Sale timers</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
           <tr><td>Animated UI + tweening</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
+          <tr><td>Mobile / all-device support</td><td class="yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td><td class="pv yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
           <tr><td>Purchase notifications (Discord webhooks)</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
         </tbody>
       </table>
