@@ -103,7 +103,27 @@ a{text-decoration:none;}
 
 /* RESPONSIVE */
 @media(max-width:900px){.ffoot-main{grid-template-columns:1fr;gap:36px;}.ffoot-cols{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:640px){.ffnav-links{display:none;}.fflogo-txt{display:none;}}
+
+/* MOBILE MENU */
+.ffnav-burger{display:none;width:38px;height:38px;border-radius:9px;background:rgba(40,120,255,0.08);border:1px solid rgba(40,120,255,0.22);cursor:pointer;align-items:center;justify-content:center;color:var(--t2);flex-shrink:0;transition:all 0.2s;padding:0;}
+.ffnav-burger:hover{background:rgba(40,120,255,0.16);color:var(--tx);}
+.ffnav-burger svg{width:19px;height:19px;display:block;}
+.ffnav-burger .x{display:none;}
+.ffnav-burger.open .mn{display:none;}
+.ffnav-burger.open .x{display:block;}
+.ffmenu{position:fixed;top:0;right:0;bottom:0;width:min(300px,82vw);background:rgba(8,14,26,0.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-left:1px solid rgba(40,120,255,0.2);box-shadow:-12px 0 48px rgba(0,0,0,0.55);z-index:10000;transform:translateX(100%);transition:transform 0.32s cubic-bezier(.4,.0,.2,1);display:flex;flex-direction:column;padding:88px 20px 28px;gap:4px;}
+.ffmenu.open{transform:translateX(0);}
+.ffmenu a{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:11px;font-family:var(--f);font-size:16px;font-weight:600;color:var(--t2);text-decoration:none;transition:all 0.18s;}
+.ffmenu a:hover,.ffmenu a.on{background:rgba(40,120,255,0.12);color:var(--tx);}
+.ffmenu-div{height:1px;background:rgba(40,120,255,0.12);margin:12px 4px;}
+.ffmenu-cta{background:linear-gradient(135deg,#2878ff,#1655c8)!important;color:#fff!important;justify-content:center;box-shadow:0 6px 20px rgba(40,120,255,0.3);}
+.ffmenu-cta:hover{transform:translateY(-1px);}
+.ffmenu-ovl{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9998;opacity:0;pointer-events:none;transition:opacity 0.32s;backdrop-filter:blur(2px);}
+.ffmenu-ovl.open{opacity:1;pointer-events:auto;}
+body.ffmenu-lock{overflow:hidden;}
+
+@media(max-width:640px){.ffnav-links{display:none;}.fflogo-txt{display:inline;}.ffnav-burger{display:flex;}.ffnav-r .ff-btn-pr{display:none;}}
+@media(min-width:641px){.ffmenu,.ffmenu-ovl{display:none;}}
 
 /* === SOCIAL BURST PARTICLES === */
 .ffburst{position:fixed;width:20px;height:20px;pointer-events:none;z-index:9999;will-change:transform,opacity;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));}

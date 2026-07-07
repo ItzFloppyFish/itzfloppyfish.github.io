@@ -124,6 +124,40 @@
 .ff-sect-h{font-size:17px;font-weight:700;color:var(--tx);margin-bottom:12px;}
 
 @media(max-width:1024px){.ffdtl-cols{grid-template-columns:1fr;}.ff-buy{position:static;}.ff-prev-pp{grid-template-columns:1fr;}}
+
+/* === DOWNLOAD BASEPLATE ACCORDION === */
+.ffdl{border:1px solid var(--br);border-radius:14px;background:var(--s);overflow:hidden;margin-bottom:36px;}
+.ffdl-head{width:100%;display:flex;align-items:center;gap:14px;padding:18px 20px;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--f);transition:background 0.2s;}
+.ffdl-head:hover{background:rgba(40,120,255,0.04);}
+.ffdl-head:focus-visible{outline:none;box-shadow:inset 0 0 0 2px rgba(40,120,255,0.4);}
+.ffdl-head-ic{width:38px;height:38px;border-radius:9px;background:rgba(40,120,255,0.1);border:1px solid rgba(40,120,255,0.22);display:flex;align-items:center;justify-content:center;color:var(--bl);flex-shrink:0;}
+.ffdl-head-ic svg.ffic{width:19px;height:19px;}
+.ffdl-head-tx{flex:1;min-width:0;}
+.ffdl-head-tx .t{font-size:15px;font-weight:700;color:var(--tx);font-family:var(--fh);letter-spacing:-0.2px;line-height:1.25;}
+.ffdl-head-tx .s{font-size:12.5px;color:var(--t3);margin-top:2px;line-height:1.4;}
+.ffdl-chev{color:var(--t3);flex-shrink:0;transition:transform 0.3s ease,color 0.2s;}
+.ffdl-chev svg{width:20px;height:20px;display:block;}
+.ffdl.open .ffdl-chev{transform:rotate(180deg);color:var(--bl);}
+.ffdl-body{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+.ffdl.open .ffdl-body{max-height:2000px;}
+.ffdl-inner{padding:4px 12px 12px;border-top:1px solid rgba(40,120,255,0.1);}
+.ffdl-row{display:flex;align-items:center;gap:14px;padding:13px 8px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.ffdl-row:last-child{border-bottom:none;}
+.ffdl-row-ic{color:var(--t3);flex-shrink:0;display:flex;}
+.ffdl-row-ic svg{width:16px;height:16px;display:block;}
+.ffdl-row-t{flex:1;min-width:0;font-family:var(--fm);font-size:13px;color:var(--t2);line-height:1.4;word-break:break-word;}
+.ffdl-copy{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;background:rgba(40,120,255,0.07);border:1px solid rgba(40,120,255,0.28);color:var(--bl);font-family:var(--f);font-size:12.5px;font-weight:600;cursor:pointer;transition:all 0.18s;white-space:nowrap;}
+.ffdl-copy svg{width:14px;height:14px;display:block;flex-shrink:0;}
+.ffdl-copy:hover{background:rgba(40,120,255,0.14);border-color:rgba(40,120,255,0.5);}
+.ffdl-copy:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(40,120,255,0.22);}
+.ffdl-copy.done{background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.45);color:#4ade80;}
+.ffdl-empty{padding:20px 8px;font-size:13px;color:var(--t3);text-align:center;}
+@media(max-width:520px){
+  .ffdl-row{flex-wrap:wrap;gap:10px;}
+  .ffdl-row-t{flex:1 1 100%;order:1;}
+  .ffdl-row-ic{order:0;}
+  .ffdl-copy{order:2;width:100%;min-height:40px;}
+}
 </style>
 </head>
 <body>
@@ -146,6 +180,10 @@
       <a class="ffnl" href="/contact/">Contact</a>
     </div>
     <div class="ffnav-r">
+      <button class="ffnav-burger" id="ffburger" aria-label="Menu" aria-expanded="false" aria-controls="ffmenu">
+        <svg class="mn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
       <a href="https://payhip.com/auth/login" target="_blank" class="ff-ibtn" title="My Downloads">
         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
       </a>
@@ -153,6 +191,18 @@
     </div>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="ffmenu-ovl" id="ffmenuOvl"></div>
+<aside class="ffmenu" id="ffmenu" aria-label="Mobile navigation">
+  <a href="/">Home</a>
+  <a href="/systems/" class="on">Systems</a>
+  <a href="/about/">About</a>
+  <a href="/contact/">Contact</a>
+  <div class="ffmenu-div"></div>
+  <a href="https://payhip.com/auth/login" target="_blank" rel="noopener">My Downloads</a>
+  <a href="/systems/" class="ffmenu-cta">Browse Systems</a>
+</aside>
 
 <!-- DETAIL -->
 <main class="ffdtl">
@@ -231,6 +281,25 @@
       </table>
       <p class="ff-cmp-note">The back end works the same in both versions. Premium is the same system, just far more polished on the surface.</p>
 
+      <!-- DOWNLOAD BASEPLATE -->
+      <div class="ffdl" id="ffdl">
+        <button class="ffdl-head" id="ffdlHead" aria-expanded="false" aria-controls="ffdlBody">
+          <span class="ffdl-head-ic">
+            <svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+          </span>
+          <span class="ffdl-head-tx">
+            <span class="t">Download my exact baseplate</span>
+            <span class="s">Every free-version script — copy what you need</span>
+          </span>
+          <span class="ffdl-chev" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="ffdl-body" id="ffdlBody" role="region" aria-labelledby="ffdlHead">
+          <div class="ffdl-inner" id="ffdlRows"></div>
+        </div>
+      </div>
+
     </div>
 
     <!-- RIGHT: BUY PANEL -->
@@ -278,6 +347,31 @@ const MEDIA = [
   { type:"image", src:"../../images/ItemShop.jpg" },
   { type:"video", id:"W4TD81WCRQc" }
   // ,{ type:"image", src:"../../images/ItemShop2.jpg" }
+];
+// ============================================================
+
+// ============================================================
+// DOWNLOAD BASEPLATE - the free-version scripts people can copy.
+// Each entry: a title (shown) and code (hidden, copied on click).
+// Paste real Lua between the backticks. If your code contains a
+// backtick, escape it as \` so the template literal doesn't break.
+// Reorder / add / remove freely.
+const SCRIPTS = [
+  {
+    title: "ServerScriptService — ShopHandler",
+    code: `-- ShopHandler (free version)
+-- Paste your server script here.`
+  },
+  {
+    title: "ReplicatedStorage — ShopConfig",
+    code: `-- ShopConfig (free version)
+-- Paste your config module here.`
+  },
+  {
+    title: "StarterGui — ShopClient (LocalScript)",
+    code: `-- ShopClient (free version)
+-- Paste your local script here.`
+  }
 ];
 // ============================================================
 
@@ -400,6 +494,92 @@ function ffCarAuto(){
 document.addEventListener('DOMContentLoaded', ffCarRender);
 
 document.addEventListener('DOMContentLoaded', () => ffBT('prem'));
+
+// ===== DOWNLOAD BASEPLATE (accordion + copy) =====
+function ffCopyIcon(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
+}
+function ffCheckIcon(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+}
+function ffFileIcon(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12.5 8 15l2 2.5"/><path d="m14 12.5 2 2.5-2 2.5"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/></svg>';
+}
+
+function ffCopyText(text){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    return navigator.clipboard.writeText(text);
+  }
+  // Fallback for older / non-secure-context browsers
+  return new Promise((resolve, reject) => {
+    try{
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly','');
+      ta.style.position = 'fixed';
+      ta.style.top = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      ok ? resolve() : reject();
+    }catch(e){ reject(e); }
+  });
+}
+
+function ffRenderScripts(){
+  const wrap = document.getElementById('ffdlRows');
+  if(!wrap) return;
+  if(!SCRIPTS || !SCRIPTS.length){
+    wrap.innerHTML = '<div class="ffdl-empty">Scripts are on the way — check back soon.</div>';
+    return;
+  }
+  wrap.innerHTML = SCRIPTS.map((s,i) =>
+    `<div class="ffdl-row">
+      <span class="ffdl-row-ic">${ffFileIcon()}</span>
+      <span class="ffdl-row-t">${s.title.replace(/</g,'&lt;')}</span>
+      <button class="ffdl-copy" data-i="${i}" type="button" aria-label="Copy ${s.title.replace(/"/g,'&quot;')}">
+        <span class="ffdl-copy-ic">${ffCopyIcon()}</span><span class="ffdl-copy-lbl">Copy</span>
+      </button>
+    </div>`
+  ).join('');
+
+  wrap.querySelectorAll('.ffdl-copy').forEach(btn => {
+    btn.addEventListener('click', function(){
+      if(this.classList.contains('done')) return; // debounce during feedback window
+      const idx = +this.getAttribute('data-i');
+      const script = SCRIPTS[idx];
+      if(!script) return;
+      const icon = this.querySelector('.ffdl-copy-ic');
+      const lbl = this.querySelector('.ffdl-copy-lbl');
+      ffCopyText(script.code).then(() => {
+        this.classList.add('done');
+        icon.innerHTML = ffCheckIcon();
+        lbl.textContent = 'Copied';
+        setTimeout(() => {
+          this.classList.remove('done');
+          icon.innerHTML = ffCopyIcon();
+          lbl.textContent = 'Copy';
+        }, 1600);
+      }).catch(() => {
+        lbl.textContent = 'Press Ctrl+C';
+        setTimeout(() => { lbl.textContent = 'Copy'; }, 1600);
+      });
+    });
+  });
+}
+
+function ffInitDownload(){
+  const acc = document.getElementById('ffdl');
+  const head = document.getElementById('ffdlHead');
+  if(!acc || !head) return;
+  head.addEventListener('click', () => {
+    const open = acc.classList.toggle('open');
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  ffRenderScripts();
+}
+document.addEventListener('DOMContentLoaded', ffInitDownload);
 </script>
 </body>
 </html>
