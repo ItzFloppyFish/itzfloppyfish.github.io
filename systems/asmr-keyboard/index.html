@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../../images/YouTube%20Profile%20Picture.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASMR Keyboard System | Itz_FloppyFish</title>
+<meta name="description" content="Satisfying ASMR keyboard typing sounds for your Roblox game. Download the free Key blender mesh from the video, or grab the full ready-to-go system. Copy the exact code from the tutorial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css">
+<style>
+/* BREADCRUMB */
+.ffcrumb{font-size:13px;color:var(--t3);margin-bottom:20px;font-family:var(--fm);}
+.ffcrumb a{color:var(--bl);text-decoration:none;}
+.ffcrumb a:hover{text-decoration:underline;}
+.ffcrumb span{color:var(--t3);margin:0 6px;}
+
+/* DETAIL LAYOUT */
+.ffdtl{padding:110px 24px 80px;max-width:1140px;margin:0 auto;}
+.ffdtl-hero{width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--b3);margin-bottom:28px;border:1px solid var(--br);position:relative;}
+.ffdtl-hero-icon{font-size:80px;opacity:0.3;padding:60px;}
+.ffcar{position:relative;width:100%;height:100%;}
+.ffcar-track{display:flex;width:100%;height:100%;transition:transform 0.5s ease;}
+.ffcar-slide{min-width:100%;height:100%;}
+.ffcar-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.ffcar-slide iframe{width:100%;height:100%;border:none;display:block;}
+.ffcar-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(5,10,20,0.6);border:1px solid var(--br2);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;transition:all 0.2s;backdrop-filter:blur(4px);}
+.ffcar-btn:hover{background:rgba(40,120,255,0.5);}
+.ffcar-btn.prev{left:14px;}
+.ffcar-btn.next{right:14px;}
+.ffcar-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:3;}
+.ffcar-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);cursor:pointer;transition:all 0.2s;border:none;padding:0;}
+.ffcar-dot.act{background:#fff;width:22px;border-radius:4px;}
+.ffcar-single .ffcar-btn,.ffcar-single .ffcar-dots{display:none;}
+.ffdtl-tr h1{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-0.5px;margin-bottom:10px;font-family:var(--fh);}
+.ffdtl-tr p{font-size:16px;color:var(--t2);line-height:1.7;}
+.ffdtl-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.ffdtl-cols{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start;margin-top:28px;}
+
+/* WHAT YOU GET PANELS */
+.ff-prev-pp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;}
+.ff-prev-p{border-radius:12px;overflow:hidden;border:1px solid var(--br);background:var(--b3);}
+.ff-prev-p.pm{border-color:rgba(251,191,36,0.25);}
+.ff-prev-h{padding:11px 15px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(40,120,255,0.12);background:rgba(255,255,255,0.02);}
+.ff-prev-h.pm{border-bottom-color:rgba(251,191,36,0.14);}
+.ff-prev-ht{font-size:11px;font-weight:700;font-family:var(--f);text-transform:uppercase;letter-spacing:0.08em;}
+.ff-prev-ht.fr{color:#4ade80;}
+.ff-prev-ht.pm{color:#fbbf24;}
+.ff-prev-b{padding:13px 15px;}
+.ff-prev-lbl{font-size:11px;font-weight:700;font-family:var(--f);text-transform:uppercase;letter-spacing:0.08em;padding:11px 15px 0;}
+.ff-prev-lbl.fr{color:#4ade80;}
+.ff-prev-lbl.pm{color:#fbbf24;}
+.ff-prev-f{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;color:var(--t2);}
+.ff-prev-f:last-child{border-bottom:none;}
+.ff-prev-f .ck{color:#4ade80;font-size:11px;flex-shrink:0;margin-top:2px;}
+.ff-prev-f .ck.pm{color:#fbbf24;}
+
+/* VIDEO EMBED */
+.ff-vemb{width:100%;aspect-ratio:16/9;background:var(--b3);border:1px solid var(--br);border-radius:14px;overflow:hidden;margin-bottom:28px;display:flex;align-items:center;justify-content:center;}
+.ff-vemb iframe{width:100%;height:100%;border:none;display:block;}
+.ff-vph{text-align:center;color:var(--t3);padding:40px;}
+.ff-vph p{font-size:13px;color:var(--t3);margin-top:10px;}
+
+/* COMPARISON TABLE */
+.ffcmp{width:100%;border-collapse:collapse;border:1px solid var(--br);border-radius:14px;overflow:hidden;margin-bottom:14px;}
+.ffcmp th{background:var(--s);padding:13px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--t2);letter-spacing:0.06em;border-bottom:1px solid var(--br);font-family:var(--f);text-transform:uppercase;}
+.ffcmp th.pc{color:#fbbf24;background:rgba(251,191,36,0.04);}
+.ffcmp td{padding:11px 16px;font-size:13px;color:var(--t2);border-bottom:1px solid rgba(40,120,255,0.08);}
+.ffcmp tr:last-child td{border-bottom:none;}
+.ffcmp tr:nth-child(even) td{background:rgba(40,120,255,0.02);}
+.ffcmp .yes{color:#4ade80;font-weight:700;}
+.ff-cmp-note{font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:36px;font-style:italic;}
+.ffcmp .no{color:var(--t3);}
+.ffcmp .pv{color:#fbbf24;font-weight:600;}
+
+/* BUY PANEL */
+.ff-buy{background:var(--s);border:1px solid var(--br);border-radius:18px;padding:24px;position:sticky;top:96px;}
+.ff-buy-tabs{display:flex;gap:6px;margin-bottom:20px;}
+.ff-buy-tb{flex:1;padding:10px;border-radius:8px;text-align:center;font-size:11px;font-weight:700;font-family:var(--f);cursor:pointer;transition:all 0.2s;border:1px solid transparent;text-transform:uppercase;letter-spacing:0.06em;background:none;}
+.ff-buy-tb.fr{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.22);color:#4ade80;}
+.ff-buy-tb.pm{background:rgba(251,191,36,0.08);border-color:rgba(251,191,36,0.22);color:#fbbf24;}
+.ff-buy-tb.fr.act{background:rgba(34,197,94,0.18);border-color:rgba(34,197,94,0.5);box-shadow:0 0 12px rgba(34,197,94,0.15);}
+.ff-buy-tb.pm.act{background:rgba(251,191,36,0.18);border-color:rgba(251,191,36,0.5);box-shadow:0 0 12px rgba(251,191,36,0.15);}
+
+.ff-pr-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
+.ff-pr{font-size:38px;font-weight:900;color:var(--tx);font-family:var(--fh);}
+.ff-pr-orig{font-size:18px;color:var(--t3);text-decoration:line-through;font-family:var(--fh);}
+.ff-pr-free{font-size:38px;font-weight:900;color:#4ade80;font-family:var(--fh);}
+.ff-pr-note{font-size:12px;color:var(--t3);margin-bottom:18px;}
+
+/* BUY BUTTONS - go to Payhip checkout */
+.ff-btn-buy-prem{
+  display:block;width:100%;
+  background:linear-gradient(135deg,#ff6b2b,#e05520);
+  color:#fff;border:none;border-radius:10px;
+  padding:15px;font-size:15px;font-weight:700;
+  cursor:pointer;font-family:var(--f);
+  box-shadow:0 6px 24px rgba(255,107,43,0.35);
+  margin-bottom:10px;transition:all 0.25s;
+  text-align:center;text-decoration:none;
+}
+.ff-btn-buy-prem:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,107,43,0.45);}
+/* constant shine sweep */
+.ff-btn-buy-prem,.ff-btn-dl-free{position:relative;overflow:hidden;isolation:isolate;}
+.ff-btn-buy-prem::after,.ff-btn-dl-free::after{
+  content:"";position:absolute;top:0;left:0;width:60%;height:100%;
+  background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,0.45) 50%,transparent 80%);
+  transform:translateX(-160%) skewX(-18deg);
+  animation:ffShine 4.2s ease-in-out infinite;
+  pointer-events:none;z-index:1;
+}
+.ff-btn-dl-free::after{background:linear-gradient(100deg,transparent 20%,rgba(74,222,128,0.35) 50%,transparent 80%);animation-duration:4.8s;animation-delay:0.6s;}
+@keyframes ffShine{
+  0%{transform:translateX(-160%) skewX(-18deg);}
+  55%{transform:translateX(320%) skewX(-18deg);}
+  100%{transform:translateX(320%) skewX(-18deg);}
+}
+@media(prefers-reduced-motion:reduce){.ff-btn-buy-prem::after,.ff-btn-dl-free::after{animation:none;opacity:0;}}
+
+.ff-btn-dl-free{
+  display:block;width:100%;
+  background:rgba(34,197,94,0.08);
+  border:1px solid rgba(34,197,94,0.28);
+  color:#4ade80;border-radius:10px;
+  padding:13px;font-size:14px;font-weight:600;
+  cursor:pointer;font-family:var(--f);
+  margin-bottom:18px;transition:all 0.2s;
+  text-align:center;text-decoration:none;
+}
+.ff-btn-dl-free:hover{background:rgba(34,197,94,0.15);}
+
+.ff-buy-feats{border-top:1px solid rgba(40,120,255,0.12);padding-top:16px;}
+.ff-buy-fl{font-size:10px;font-family:var(--f);font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;}
+.ff-buy-fi{display:flex;align-items:center;gap:9px;padding:5px 0;font-size:12px;color:var(--t2);border-bottom:1px solid rgba(255,255,255,0.04);}
+.ff-buy-fi:last-child{border-bottom:none;}
+.ff-buy-fi .ck{font-size:12px;flex-shrink:0;}
+
+/* SECTION HEADERS */
+.ff-sect-h{font-size:17px;font-weight:700;color:var(--tx);margin-bottom:12px;}
+
+@media(max-width:1024px){.ffdtl-cols{grid-template-columns:1fr;}.ff-buy{position:static;}.ff-prev-pp{grid-template-columns:1fr;}}
+
+/* === JUMP TO SCRIPTS BUTTON === */
+.ff-jump-scripts{
+  display:inline-flex;align-items:center;gap:9px;margin-top:18px;
+  padding:11px 18px;border-radius:11px;
+  background:rgba(40,120,255,0.09);border:1px solid rgba(40,120,255,0.32);
+  color:#7db2ff;font-family:var(--f);font-size:14px;font-weight:600;
+  text-decoration:none;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;
+  transition:background 0.2s,border-color 0.2s,transform 0.2s;
+}
+.ff-jump-scripts svg.ffic{width:16px;height:16px;}
+.ff-jump-scripts:hover{background:rgba(40,120,255,0.16);border-color:rgba(40,120,255,0.55);transform:translateY(-1px);}
+.ff-jump-scripts .ff-jump-arr{transition:transform 0.25s;opacity:0.85;}
+.ff-jump-scripts:hover .ff-jump-arr{transform:translateY(3px);}
+.ff-jump-scripts::after{
+  content:"";position:absolute;top:0;left:0;width:55%;height:100%;
+  background:linear-gradient(100deg,transparent 20%,rgba(125,178,255,0.35) 50%,transparent 80%);
+  transform:translateX(-160%) skewX(-18deg);animation:ffShine 5s ease-in-out infinite;
+  pointer-events:none;z-index:-1;
+}
+.ffdl.ffdl-flash{animation:ffdlFlash 1.1s ease;}
+@keyframes ffdlFlash{0%,100%{box-shadow:0 0 0 0 rgba(40,120,255,0);}30%{box-shadow:0 0 0 3px rgba(40,120,255,0.35);}}
+@media(prefers-reduced-motion:reduce){.ff-jump-scripts::after{animation:none;opacity:0;}}
+
+/* === DOWNLOAD BASEPLATE ACCORDION === */
+.ffdl{border:1px solid var(--br);border-radius:14px;background:var(--s);overflow:hidden;margin-bottom:36px;}
+.ffdl-head{width:100%;display:flex;align-items:center;gap:14px;padding:18px 20px;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--f);transition:background 0.2s;}
+.ffdl-head:hover{background:rgba(40,120,255,0.04);}
+.ffdl-head:focus-visible{outline:none;box-shadow:inset 0 0 0 2px rgba(40,120,255,0.4);}
+.ffdl-head-ic{width:38px;height:38px;border-radius:9px;background:rgba(40,120,255,0.1);border:1px solid rgba(40,120,255,0.22);display:flex;align-items:center;justify-content:center;color:var(--bl);flex-shrink:0;}
+.ffdl-head-ic svg.ffic{width:19px;height:19px;}
+.ffdl-head-tx{flex:1;min-width:0;}
+.ffdl-head-tx .t{font-size:15px;font-weight:700;color:var(--tx);font-family:var(--fh);letter-spacing:-0.2px;line-height:1.25;}
+.ffdl-head-tx .s{font-size:12.5px;color:var(--t3);margin-top:2px;line-height:1.4;}
+.ffdl-chev{color:var(--t3);flex-shrink:0;transition:transform 0.3s ease,color 0.2s;}
+.ffdl-chev svg{width:20px;height:20px;display:block;}
+.ffdl.open .ffdl-chev{transform:rotate(180deg);color:var(--bl);}
+.ffdl-body{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+.ffdl.open .ffdl-body{max-height:2000px;}
+.ffdl-inner{padding:4px 12px 12px;border-top:1px solid rgba(40,120,255,0.1);}
+.ffdl-row{display:flex;align-items:center;gap:14px;padding:13px 8px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.ffdl-row:last-child{border-bottom:none;}
+.ffdl-row-ic{color:var(--t3);flex-shrink:0;display:flex;}
+.ffdl-row-ic svg{width:16px;height:16px;display:block;}
+.ffdl-row-t{flex:1;min-width:0;font-family:var(--fm);font-size:13px;color:var(--t2);line-height:1.4;word-break:break-word;}
+.ffdl-copy{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;background:rgba(40,120,255,0.07);border:1px solid rgba(40,120,255,0.28);color:var(--bl);font-family:var(--f);font-size:12.5px;font-weight:600;cursor:pointer;transition:all 0.18s;white-space:nowrap;}
+.ffdl-copy svg{width:14px;height:14px;display:block;flex-shrink:0;}
+.ffdl-copy:hover{background:rgba(40,120,255,0.14);border-color:rgba(40,120,255,0.5);}
+.ffdl-copy:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(40,120,255,0.22);}
+.ffdl-copy.done{background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.45);color:#4ade80;}
+.ffdl-empty{padding:20px 8px;font-size:13px;color:var(--t3);text-align:center;}
+@media(max-width:520px){
+  .ffdl-row{flex-wrap:wrap;gap:10px;}
+  .ffdl-row-t{flex:1 1 100%;order:1;}
+  .ffdl-row-ic{order:0;}
+  .ffdl-copy{order:2;width:100%;min-height:40px;}
+}
+</style>
+</head>
+<body>
+<div class="ff-grid-bg"></div>
+<canvas id="ff-cv"></canvas>
+<div class="ff-wrap-inner">
+
+<!-- NAV -->
+<nav class="ffnav" id="ffnav">
+  <div class="ffnav-i">
+    <a href="/" class="fflogo">
+      <img src="../../images/YouTube%20Profile%20Picture.png" class="fflogo-img" alt="Itz_FloppyFish" onerror="this.style.display='none';document.getElementById('fflf').style.display='flex'">
+      <div class="fflogo-fb" id="fflf">FF</div>
+      <span class="fflogo-txt">Itz_FloppyFish</span>
+    </a>
+    <div class="ffnav-links">
+      <a class="ffnl" href="/">Home</a>
+      <a class="ffnl on" href="/systems/">Systems</a>
+      <a class="ffnl" href="/about/">About</a>
+      <a class="ffnl" href="/contact/">Contact</a>
+    </div>
+    <div class="ffnav-r">
+      <button class="ffnav-burger" id="ffburger" aria-label="Menu" aria-expanded="false" aria-controls="ffmenu">
+        <svg class="mn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <a href="https://payhip.com/auth/login" target="_blank" class="ff-ibtn" title="My Downloads">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </a>
+      <a href="/systems/" class="ff-btn-pr">All Systems <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="ffmenu-ovl" id="ffmenuOvl"></div>
+<aside class="ffmenu" id="ffmenu" aria-label="Mobile navigation">
+  <a href="/">Home</a>
+  <a href="/systems/" class="on">Systems</a>
+  <a href="/about/">About</a>
+  <a href="/contact/">Contact</a>
+  <div class="ffmenu-div"></div>
+  <a href="https://payhip.com/auth/login" target="_blank" rel="noopener">My Downloads</a>
+  <a href="/systems/" class="ffmenu-cta">Browse Systems</a>
+</aside>
+
+<!-- DETAIL -->
+<main class="ffdtl">
+
+  <div class="ffdtl-tr">
+    <h1>ASMR Keyboard System</h1>
+    <p>Crisp, satisfying keyboard typing sounds that make your Roblox game feel alive. Every keypress triggers a clean ASMR click, so typing in-game actually feels good. Grab the free Key blender mesh I used in the video, or download the full system ready to drop straight in and go.</p>
+    <a href="#ffdl" class="ff-jump-scripts" id="ffJumpScripts">
+      <svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+      <span>Copy scripts from video</span>
+      <svg class="ffic ff-jump-arr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+    </a>
+  </div>
+
+  <!-- TWO-COLUMN LAYOUT -->
+  <div class="ffdtl-cols">
+
+    <!-- LEFT: DETAIL CONTENT -->
+    <div>
+
+      <!-- WHAT YOU GET -->
+      <h2 class="ff-sect-h">What you get</h2>
+      <div class="ff-prev-pp">
+        <!-- FREE -->
+        <div class="ff-prev-p">
+          <div class="ff-prev-lbl fr">Free Mesh</div>
+          <div class="ff-prev-b">
+            <div class="ff-prev-f"><svg class="ffic ck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> The exact Key blender mesh from the video</div>
+            <div class="ff-prev-f"><svg class="ffic ck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Ready to import and use</div>
+            <div class="ff-prev-f"><svg class="ffic ck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Follow along with the tutorial code below</div>
+          
+          </div>
+        </div>
+        <!-- PREMIUM -->
+        <div class="ff-prev-p pm">
+          <div class="ff-prev-lbl pm">Premium</div>
+          <div class="ff-prev-b">
+            <div class="ff-prev-f"><svg class="ffic ck pm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Full system, ready to go out of the box</div>
+            <div class="ff-prev-f"><svg class="ffic ck pm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> The Key mesh included</div>
+            <div class="ff-prev-f"><svg class="ffic ck pm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Multiple keypress sound variations</div>
+            <div class="ff-prev-f"><svg class="ffic ck pm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Clean, commented code</div>
+            <div class="ff-prev-f"><svg class="ffic ck pm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Optimised for all devices</div>
+            <div class="ff-prev-f"><svg class="ffic ck pm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> Priority support</div>
+          
+          </div>
+        </div>
+      </div>
+
+      <!-- MEDIA: images + video in one rotating frame -->
+      <div class="ffdtl-hero">
+        <div class="ffcar" id="ffcar">
+          <div class="ffcar-track" id="ffcarTrack"></div>
+          <button class="ffcar-btn prev" onclick="ffCarMove(-1)" aria-label="Previous">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="ffcar-btn next" onclick="ffCarMove(1)" aria-label="Next">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <div class="ffcar-dots" id="ffcarDots"></div>
+        </div>
+      </div>
+
+      <!-- COMPARISON TABLE -->
+      <h2 class="ff-sect-h">Feature comparison</h2>
+      <table class="ffcmp">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free Mesh</th>
+            <th class="pc"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg> Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Key blender mesh</td><td class="yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td><td class="pv yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
+          <tr><td>Tutorial code (copy from video)</td><td class="yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td><td class="pv yes"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
+          <tr><td>Ready-to-go working system</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
+          <tr><td>Multiple keypress sound variations</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
+          <tr><td>Optimised for all devices</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
+          <tr><td>Priority support</td><td class="no"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></td><td class="pv"><svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></td></tr>
+        </tbody>
+      </table>
+      <p class="ff-cmp-note">The free download gets you the Key mesh and the exact code from the tutorial, so you can build it yourself. Premium is the whole thing done for you, ready to drop in and go.</p>
+
+      <!-- DOWNLOAD BASEPLATE -->
+      <div class="ffdl" id="ffdl">
+        <button class="ffdl-head" id="ffdlHead" aria-expanded="false" aria-controls="ffdlBody">
+          <span class="ffdl-head-ic">
+            <svg class="ffic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+          </span>
+          <span class="ffdl-head-tx">
+            <span class="t">Copy the exact code from the video</span>
+            <span class="s">Every free-version script — copy what you need</span>
+          </span>
+          <span class="ffdl-chev" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </span>
+        </button>
+        <div class="ffdl-body" id="ffdlBody" role="region" aria-labelledby="ffdlHead">
+          <div class="ffdl-inner" id="ffdlRows"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: BUY PANEL -->
+    <div>
+      <div class="ff-buy">
+        <!-- TABS -->
+        <div class="ff-buy-tabs">
+          <button class="ff-buy-tb fr" id="fftbf" onclick="ffBT('free')">Free</button>
+          <button class="ff-buy-tb pm act" id="fftbp" onclick="ffBT('prem')"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg> Premium</button>
+        </div>
+
+        <!-- PANEL CONTENT (toggled by JS) -->
+        <div id="ffbc"></div>
+        <div class="ff-buy-feats" id="ffbf"></div>
+      </div>
+    </div>
+
+  </div><!-- /ffdtl-cols -->
+</main>
+
+<!-- FOOTER -->
+<footer class="ffoot">
+  <div class="ffoot-bottom-bar">
+    <div class="ffoot-bot-left">
+      <span>&#169; 2026 Itz_FloppyFish. All rights reserved.</span>
+      <span class="ffoot-sep">&#183;</span>
+      <span>Not affiliated with Roblox Corporation.</span>
+    </div>
+    <div class="ffoot-bot-right">v3.0.0</div>
+  </div>
+</footer>
+
+</div>
+<script src="/js/main.js"></script>
+<script>
+// ============================================================
+// PRODUCT CONFIG - edit these values for this system
+// ============================================================
+// ============================================================
+// MEDIA GALLERY - images and video in one rotating frame.
+// type "image" = a screenshot (use 1920x1080 / 16:9).
+// type "video" = a YouTube video ID.
+// Reorder, add, or remove items freely.
+const MEDIA = [
+  // Swap these for your real ASMR keyboard media.
+  // Drop the image into /images/ and update the filename below.
+  { type:"image", src:"../../images/ASMRKeyboard.jpg" },
+  { type:"video", id:"REPLACE_WITH_VIDEO_ID" }
+  // ,{ type:"image", src:"../../images/ASMRKeyboard2.jpg" }
+];
+// ============================================================
+
+// ============================================================
+// COPY-FROM-VIDEO SCRIPTS - the code people can copy for free.
+// Each entry: a title (shown) and code (hidden, copied on click).
+// Paste your real Lua between the backticks. If your code contains a
+// backtick, escape it as \` so the template literal doesn't break.
+// Reorder / add / remove freely.
+const SCRIPTS = [
+  {
+    title: "StarterPlayerScripts — ASMRKeyboard (LocalScript)",
+    code: `-- ASMR Keyboard (LocalScript)
+-- Location: StarterPlayer > StarterPlayerScripts
+-- Paste your LocalScript here.`
+  },
+  {
+    title: "ServerScriptService — ASMRKeyboardServer (Script)",
+    code: `-- ASMR Keyboard (Server Script)
+-- Location: ServerScriptService
+-- Paste your server Script here.`
+  }
+];
+// ============================================================
+
+const PRODUCT = {
+  // Payhip product keys - find these in your Payhip dashboard
+  // Dashboard > Products > [product] > Share/Embed > the key in the URL
+  freeKey:  "4wF3G",    // Free Key mesh Payhip product key
+  premKey:  "eKqY7",    // Premium system Payhip product key
+
+  freePrice: "Free",
+  premPrice: "$1.99",
+  premOriginal: "$1.99",   // set same as premPrice to hide the crossed-out price
+
+  freeFeatures: [
+    "The exact Key mesh from the video",
+    "Ready to import and use",
+    "Copy the tutorial code below"
+  ],
+  premFeatures: [
+    "Full system, ready to go",
+    "The Key mesh included",
+    "Multiple keypress sound variations",
+    "Clean, commented code",
+    "Optimised for all devices",
+    "Priority support"
+  ]
+};
+// ============================================================
+
+let bMode = "prem";
+
+function ffBT(m) {
+  bMode = m;
+  document.getElementById('fftbf').classList.toggle('act', m === 'free');
+  document.getElementById('fftbp').classList.toggle('act', m === 'prem');
+
+  const bc = document.getElementById('ffbc');
+  const bf = document.getElementById('ffbf');
+
+  if (m === 'free') {
+    bc.innerHTML = `
+      <div class="ff-pr-row"><span class="ff-pr-free">Free</span></div>
+      <div class="ff-pr-note">Free forever &nbsp;&#183;&nbsp; Instant download</div>
+      <a href="https://payhip.com/buy?link=${PRODUCT.freeKey}"
+         class="ff-btn-dl-free"
+         target="_blank" rel="noopener">
+        <svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></svg>&nbsp; Download</a>`;
+    bf.innerHTML = `<div class="ff-buy-fl">Includes</div>` +
+      PRODUCT.freeFeatures.map(f =>
+        `<div class="ff-buy-fi"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px;color:#4ade80;" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> ${f}</div>`
+      ).join('');
+  } else {
+    const showOrig = PRODUCT.premOriginal && PRODUCT.premOriginal !== PRODUCT.premPrice;
+    bc.innerHTML = `
+      <div class="ff-pr-row">
+        <span class="ff-pr">${PRODUCT.premPrice}</span>
+        ${showOrig ? `<span class="ff-pr-orig">${PRODUCT.premOriginal}</span>` : ''}
+      </div>
+      <div class="ff-pr-note">One-time purchase &nbsp;&#183;&nbsp; Instant download</div>
+      <a href="https://payhip.com/buy?link=${PRODUCT.premKey}"
+         class="ff-btn-buy-prem"
+         target="_blank" rel="noopener">
+        <svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg>&nbsp; Buy Premium · ${PRODUCT.premPrice}
+      </a>
+      <a href="https://payhip.com/buy?link=${PRODUCT.freeKey}"
+         class="ff-btn-dl-free"
+         style="margin-top:0;"
+         target="_blank" rel="noopener">
+        <svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-3px;" aria-hidden="true"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></svg>&nbsp; Get the free mesh instead
+      </a>`;
+    bf.innerHTML = `<div class="ff-buy-fl">Premium Includes</div>` +
+      PRODUCT.premFeatures.map(f =>
+        `<div class="ff-buy-fi"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:-2px;color:#fbbf24;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg> ${f}</div>`
+      ).join('');
+  }
+}
+// ===== MEDIA CAROUSEL (images + video) =====
+let ffCarIdx = 0;
+let ffCarTimer = null;
+function ffCarSlide(m){
+  if(m.type === "video"){
+    return `<div class="ffcar-slide"><iframe src="https://www.youtube.com/embed/${m.id}" title="Tutorial video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+  }
+  return `<div class="ffcar-slide"><img src="${m.src}" alt="ASMR Keyboard System preview" loading="lazy"></div>`;
+}
+function ffCarRender(){
+  const track = document.getElementById('ffcarTrack');
+  const dots = document.getElementById('ffcarDots');
+  const car = document.getElementById('ffcar');
+  if(!track) return;
+  track.innerHTML = MEDIA.map(ffCarSlide).join('');
+  dots.innerHTML = MEDIA.map((m,i) =>
+    `<button class="ffcar-dot${i===0?' act':''}" onclick="ffCarGo(${i})" aria-label="${m.type==='video'?'Video':'Image '+(i+1)}"></button>`
+  ).join('');
+  if(MEDIA.length <= 1){ car.classList.add('ffcar-single'); }
+  else { ffCarAuto(); }
+}
+function ffCarUpdate(){
+  const track = document.getElementById('ffcarTrack');
+  track.style.transform = `translateX(-${ffCarIdx*100}%)`;
+  document.querySelectorAll('.ffcar-dot').forEach((d,i)=>d.classList.toggle('act',i===ffCarIdx));
+}
+function ffCarMove(dir){
+  ffCarIdx = (ffCarIdx + dir + MEDIA.length) % MEDIA.length;
+  ffCarUpdate(); ffCarAuto();
+}
+function ffCarGo(i){ ffCarIdx = i; ffCarUpdate(); ffCarAuto(); }
+function ffCarAuto(){
+  if(MEDIA.length <= 1) return;
+  clearTimeout(ffCarTimer);
+  // Continuous loop. Video slides dwell longer so people can watch
+  // before it advances; images move at a steady pace.
+  const dwell = (MEDIA[ffCarIdx] && MEDIA[ffCarIdx].type === "video") ? 12000 : 4500;
+  ffCarTimer = setTimeout(()=>{
+    ffCarIdx = (ffCarIdx+1) % MEDIA.length;
+    ffCarUpdate();
+    ffCarAuto();
+  }, dwell);
+}
+document.addEventListener('DOMContentLoaded', ffCarRender);
+
+document.addEventListener('DOMContentLoaded', () => ffBT('prem'));
+
+// ===== DOWNLOAD BASEPLATE (accordion + copy) =====
+function ffCopyIcon(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
+}
+function ffCheckIcon(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+}
+function ffFileIcon(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12.5 8 15l2 2.5"/><path d="m14 12.5 2 2.5-2 2.5"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/></svg>';
+}
+
+function ffCopyText(text){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    return navigator.clipboard.writeText(text);
+  }
+  // Fallback for older / non-secure-context browsers
+  return new Promise((resolve, reject) => {
+    try{
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly','');
+      ta.style.position = 'fixed';
+      ta.style.top = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      ok ? resolve() : reject();
+    }catch(e){ reject(e); }
+  });
+}
+
+function ffRenderScripts(){
+  const wrap = document.getElementById('ffdlRows');
+  if(!wrap) return;
+  if(!SCRIPTS || !SCRIPTS.length){
+    wrap.innerHTML = '<div class="ffdl-empty">Scripts are on the way — check back soon.</div>';
+    return;
+  }
+  wrap.innerHTML = SCRIPTS.map((s,i) =>
+    `<div class="ffdl-row">
+      <span class="ffdl-row-ic">${ffFileIcon()}</span>
+      <span class="ffdl-row-t">${s.title.replace(/</g,'&lt;')}</span>
+      <button class="ffdl-copy" data-i="${i}" type="button" aria-label="Copy ${s.title.replace(/"/g,'&quot;')}">
+        <span class="ffdl-copy-ic">${ffCopyIcon()}</span><span class="ffdl-copy-lbl">Copy</span>
+      </button>
+    </div>`
+  ).join('');
+
+  wrap.querySelectorAll('.ffdl-copy').forEach(btn => {
+    btn.addEventListener('click', function(){
+      if(this.classList.contains('done')) return; // debounce during feedback window
+      const idx = +this.getAttribute('data-i');
+      const script = SCRIPTS[idx];
+      if(!script) return;
+      const icon = this.querySelector('.ffdl-copy-ic');
+      const lbl = this.querySelector('.ffdl-copy-lbl');
+      ffCopyText(script.code).then(() => {
+        this.classList.add('done');
+        icon.innerHTML = ffCheckIcon();
+        lbl.textContent = 'Copied';
+        setTimeout(() => {
+          this.classList.remove('done');
+          icon.innerHTML = ffCopyIcon();
+          lbl.textContent = 'Copy';
+        }, 1600);
+      }).catch(() => {
+        lbl.textContent = 'Press Ctrl+C';
+        setTimeout(() => { lbl.textContent = 'Copy'; }, 1600);
+      });
+    });
+  });
+}
+
+function ffInitDownload(){
+  const acc = document.getElementById('ffdl');
+  const head = document.getElementById('ffdlHead');
+  if(!acc || !head) return;
+  head.addEventListener('click', () => {
+    const open = acc.classList.toggle('open');
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  ffRenderScripts();
+}
+document.addEventListener('DOMContentLoaded', ffInitDownload);
+
+// ===== JUMP TO SCRIPTS (hero button) =====
+document.addEventListener('DOMContentLoaded', () => {
+  const jump = document.getElementById('ffJumpScripts');
+  const acc = document.getElementById('ffdl');
+  const head = document.getElementById('ffdlHead');
+  if(!jump || !acc) return;
+  jump.addEventListener('click', (e) => {
+    e.preventDefault();
+    // open the accordion if it's closed
+    if(!acc.classList.contains('open')){
+      acc.classList.add('open');
+      if(head) head.setAttribute('aria-expanded','true');
+    }
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    acc.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'});
+    // brief highlight so they see where they landed
+    acc.classList.remove('ffdl-flash');
+    void acc.offsetWidth; // reflow to restart animation
+    acc.classList.add('ffdl-flash');
+  });
+});
+</script>
+</body>
+</html>
