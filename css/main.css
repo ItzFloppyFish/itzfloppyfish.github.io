@@ -41,6 +41,9 @@ a{text-decoration:none;}
 /* BUTTONS */
 .ff-btn-lg{background:linear-gradient(135deg,#2878ff,#1655c8);color:#fff;border:none;border-radius:10px;padding:13px 28px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--f);box-shadow:0 6px 28px rgba(40,120,255,0.4);display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:all 0.25s;}
 .ff-btn-lg:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(40,120,255,0.5);}
+.ff-btn-lg.yt{background:linear-gradient(135deg,#ff3030,#c81010);box-shadow:0 6px 28px rgba(255,48,48,0.4);}
+.ff-btn-lg.yt:hover{box-shadow:0 10px 36px rgba(255,48,48,0.5);}
+.ff-btn-gh.dc:hover{background:rgba(88,101,242,0.14);border-color:rgba(88,101,242,0.5);color:#7d8cff;}
 .ff-btn-gh{background:rgba(40,120,255,0.07);border:1px solid rgba(40,120,255,0.28);color:var(--tx);border-radius:10px;padding:13px 24px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--f);display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:all 0.2s;}
 .ff-btn-gh:hover{background:rgba(40,120,255,0.14);border-color:rgba(40,120,255,0.5);}
 .ff-btn-gh.yt:hover{background:rgba(255,0,0,0.1);border-color:rgba(255,0,0,0.45);color:#ff5555;}
