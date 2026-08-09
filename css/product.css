@@ -1,4 +1,4 @@
-/* === FLOPPY FISH — PRODUCT DETAIL PAGES ===============================
+/* === FLOPPY FISH, PRODUCT DETAIL PAGES ===============================
    Shared by every /systems/<product>/ page.
    Two accent hues only: neutral glass (free / secondary) and the
    blue→cyan brand gradient (premium / primary). No green, no amber,
@@ -17,7 +17,7 @@
 .ffdtl-cols{display:grid;grid-template-columns:minmax(0,1fr) 356px;gap:44px;align-items:start;margin-top:52px;}
 .ffdtl-main{min-width:0;}
 
-/* Section rhythm — one value, used everywhere */
+/* Section rhythm, one value, used everywhere */
 .ffsec{margin-bottom:56px;scroll-margin-top:96px;}
 .ffdl{scroll-margin-top:96px;}
 .ffsec:last-child{margin-bottom:0;}
@@ -140,8 +140,13 @@
 .ffdl-chev{color:var(--t3);flex-shrink:0;transition:transform .35s var(--ez),color .28s var(--ez);}
 .ffdl-chev svg{width:20px;height:20px;display:block;}
 .ffdl.open .ffdl-chev{transform:rotate(180deg);color:var(--cy);}
-.ffdl-body{display:none;}
-.ffdl.open .ffdl-body{display:block;}
+.ffdl-body{display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .42s var(--ez);}
+.ffdl.open .ffdl-body{grid-template-rows:1fr;}
+.ffdl-body>.ffdl-inner{overflow:hidden;min-height:0;
+  opacity:0;transform:translateY(-4px);
+  transition:opacity .3s var(--ez) .06s,transform .3s var(--ez) .06s;}
+.ffdl.open .ffdl-body>.ffdl-inner{opacity:1;transform:none;}
 .ffdl-inner{padding:2px 14px 14px;border-top:1px solid var(--line-soft);}
 
 .ffdl-row{padding:14px 8px;border-bottom:1px solid var(--line-soft);}
@@ -268,7 +273,7 @@
   .ffsetup{padding:20px;}
 }
 @media(prefers-reduced-motion:reduce){
-  .ffcar-track,.ffbar,.ffbtn,.ffdl-chev{transition:none;}
+  .ffcar-track,.ffbar,.ffbtn,.ffdl-chev,.ffdl-body,.ffdl-body>.ffdl-inner{transition:none;}
 }
 
 /* ---------- HOVER SHINE ----------------------------------------------

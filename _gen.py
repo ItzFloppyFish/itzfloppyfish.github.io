@@ -56,7 +56,7 @@ FOOTER = '''<footer class="ffoot">
       <span class="ffoot-sep">&#183;</span>
       <span>Not affiliated with Roblox Corporation.</span>
     </div>
-    <div class="ffoot-bot-right">v3.3.0</div>
+    <div class="ffoot-bot-right">v3.4.0</div>
   </div>
 </footer>'''
 
@@ -133,23 +133,6 @@ def grid_section(p):
 ''' % (p['groups_sub'], cols)
 
 
-def video_section(p):
-    if not p.get('video_url'):
-        return ''
-    return '''      <section class="ffsec">
-        <a class="ffvid" href="%s" target="_blank" rel="noopener">
-          <span class="ffvid-ic">%s</span>
-          <span class="ffvid-tx">
-            <span class="t">Setup is in the video</span>
-            <span class="s">%s</span>
-          </span>
-          <span class="ffvid-ar">%s</span>
-        </a>
-      </section>
-
-''' % (p['video_url'], PLAY, p['video_note'], ARROW_R)
-
-
 def vault_section(p):
     if not p.get('scripts'):
         return ''
@@ -161,7 +144,7 @@ def vault_section(p):
             <span class="ffdl-head-ic">%(vaultic)s</span>
             <span class="ffdl-head-tx">
               <span class="t">Copy the code from the video</span>
-              <span class="s">Every script, in full, free</span>
+              <span class="s">Free, no sign up</span>
             </span>
             <span class="ffdl-chev" aria-hidden="true">%(chev)s</span>
           </button>
@@ -200,7 +183,7 @@ def build(p):
     acts = []
     if p.get('scripts'):
         acts.append('        <a href="#ffdl" class="ffbtn ffbtn-ghost" id="ffJumpScripts">%s<span>%s</span>%s</a>'
-                    % (CODEIC, 'Copy the scripts — free', ARROW))
+                    % (CODEIC, 'Copy the scripts, free', ARROW))
     if p.get('video_url'):
         acts.append('        <a href="%s" class="ffbtn ffbtn-ghost" target="_blank" rel="noopener">%s<span>Watch the tutorial</span></a>'
                     % (p['video_url'], PLAY))
@@ -306,7 +289,7 @@ def build(p):
 <script src="/js/main.js"></script>
 <script>
 /* Product config. The only part of this page that changes between
-   products — styling lives in /css/product.css, logic in /js/product.js. */
+   products, styling lives in /css/product.css, logic in /js/product.js. */
 var PRODUCT = %(cfg)s;
 
 var MEDIA = %(media)s;
@@ -323,7 +306,7 @@ var SCRIPTS = %(scripts)s;
         'lead': p['lead'],
         'actions': '\n'.join(acts),
         'banner': p.get('banner', ''),
-        'sections': vault_section(p) + video_section(p) + grid_section(p) + tiers_section(p) + pitch_section(p),
+        'sections': vault_section(p) + grid_section(p) + tiers_section(p) + pitch_section(p),
         'tabs': tabs,
         'cfg': json.dumps(cfg, indent=2),
         'media': json.dumps(p['media'], indent=2),
@@ -354,13 +337,13 @@ REDIRECT = '''<!DOCTYPE html>
 BUTTER_FREE_KEY = 'lzCJM'
 BUTTER_PAID_KEY = '8oPMH'
 BUTTER_VIDEO_ID = 'TR973nb8pCE'
-UIPACK_KEY      = 'TODO_uipack'  # see README — cannot be another store's id
+UIPACK_KEY      = 'qSt5A'  # Viral Templates listing; checkout is on their store
 
 
 COMMON_BOTH = [
     'The exact system from the video',
     'Works on PC, mobile and console',
-    'Full readable source — nothing obfuscated',
+    'Full readable source, nothing obfuscated',
     'Free to use in your own games, commercial or not',
 ]
 
@@ -371,14 +354,13 @@ PRODUCTS = [
         'slug': '/systems/asmr-butter/',
         'title': 'ASMR Butter',
         'meta': 'Walkable ASMR butter for Roblox. Sink into a soft block, or crack the crust on the crunchy version. Free Blender models and all four scripts, or the drop-in build.',
-        'lead': 'Butter you sink into. Stand on the soft block and it dents under you, slowly easing back once you step off. The crunchy version adds a brittle shell that splits open as you press in and closes again behind you.',
+        'lead': 'Butter you sink into. Stand on the soft block and it dents under you, slowly easing back once you step off. The crunchy version has a hard shell on top that cracks apart as you press into it, then closes back up behind you.',
         'video_url': 'https://www.youtube.com/watch?v=' + BUTTER_VIDEO_ID if BUTTER_VIDEO_ID else '',
-        'video_note': 'The models need bones and the sounds need naming. Both are covered start to finish.',
         'tiers_sub': 'Same system either way. The difference is how much of it is already built.',
         'both': COMMON_BOTH,
         'free_sub': 'The models, plus every script on this page.',
         'free_items': [
-            'Both Blender models — smooth and crunchy',
+            'Both Blender models, smooth and crunchy',
             'All four scripts, copyable below',
             'You add the sounds and set the models up',
         ],
@@ -390,7 +372,7 @@ PRODUCTS = [
             'Priority support if something breaks',
         ],
         'note': '<b>To be clear:</b> the drop-in build adds nothing you can\'t make from the free files. It is a shortcut, not a better system.',
-        'vault_sub': 'All four scripts in full, straight off the page.',
+        'vault_sub': 'Copy any of them straight into Studio.',
         'freeKey': BUTTER_FREE_KEY,
         'premKey': BUTTER_PAID_KEY,
         'premPrice': '$1.99',
@@ -422,9 +404,8 @@ PRODUCTS = [
         'slug': '/systems/asmr-bubble-wrap/',
         'title': 'ASMR Bubble Wrap',
         'meta': 'Poppable ASMR bubble wrap for Roblox. Walk over it and every bubble squashes with a real pop. Free model and both scripts, or the drop-in build.',
-        'lead': 'Bubble wrap you can actually walk on. Every bubble squashes under your feet with a proper pop, re-inflates a few seconds later, and never sounds the same twice — pitch and volume shift on every pop, so a whole sheet doesn\'t turn into a machine gun.',
+        'lead': 'Bubble wrap you can actually walk on. Every bubble squashes under your feet with a proper pop, re-inflates a few seconds later, and never sounds the same twice. Pitch and volume shift on every pop, so a whole sheet doesn\'t turn into a machine gun.',
         'video_url': 'https://www.youtube.com/watch?v=AfkSKUOUKA4',
-        'video_note': 'The sounds need naming and the models need tagging. Both are covered start to finish.',
         'tiers_sub': 'Same system either way. The difference is how much of it is already built.',
         'both': COMMON_BOTH,
         'free_sub': 'The model, plus both scripts on this page.',
@@ -441,7 +422,7 @@ PRODUCTS = [
             'Priority support if something breaks',
         ],
         'note': '<b>To be clear:</b> the drop-in build adds nothing you can\'t make from the free files. It is a shortcut, not a better system.',
-        'vault_sub': 'Both scripts in full, straight off the page.',
+        'vault_sub': 'Copy either one straight into Studio.',
         'freeKey': 'qdN84',
         'premKey': 'fV5h0',
         'premPrice': '$1.99',
@@ -475,7 +456,6 @@ PRODUCTS = [
         'meta': 'A giant walkable keyboard for Roblox. Every key drops and clicks as you step on it, with randomised colours and letters. Free model and both scripts, or the drop-in build.',
         'lead': 'A giant keyboard you walk across. Each key sinks under your weight with a clean mechanical click and springs back when you step off, and the keys colour themselves and pick their own letters on join, so no two servers look the same.',
         'video_url': 'https://www.youtube.com/watch?v=IHcgO49qaJA',
-        'video_note': 'Key naming and the letter setup both matter. Covered start to finish.',
         'tiers_sub': 'Same system either way. The difference is how much of it is already built.',
         'both': COMMON_BOTH,
         'free_sub': 'The model, plus both scripts on this page.',
@@ -492,7 +472,7 @@ PRODUCTS = [
             'Priority support if something breaks',
         ],
         'note': '<b>To be clear:</b> the drop-in build adds nothing you can\'t make from the free files. It is a shortcut, not a better system.',
-        'vault_sub': 'Both scripts in full, straight off the page.',
+        'vault_sub': 'Copy either one straight into Studio.',
         'freeKey': '4wF3G',
         'premKey': 'eKqY7',
         'premPrice': '$1.99',
@@ -523,16 +503,16 @@ PRODUCTS = [
         'key': 'essential-ui-pack',
         'slug': '/systems/essential-ui-pack/',
         'title': 'Essential STUD UI Pack',
-        'meta': 'Eleven-plus fully scripted Roblox UI systems — shops, rewards, codes, leaderboards and settings — with secure server-side handling. Built by Viral Templates.',
+        'meta': 'Eleven-plus fully scripted Roblox UI systems (shops, rewards, codes, leaderboards and settings) with secure server-side handling. Built by Viral Templates.',
         'lead': 'Eleven-plus complete UI systems, front end and back end, ready to drop into a live game. Shops, daily rewards, codes, leaderboards, settings and the data layer behind them are already built, animated and validated server-side.',
         'banner': '''    <div class="ffpartner">
       <span class="ffpartner-b">Partner</span>
-      <span class="ffpartner-t">Built by <b>Viral Templates</b>, stocked here as part of an ongoing partnership.</span>
+      <span class="ffpartner-t">Built by <b>Viral Templates</b>. On sale here, and supported by them directly.</span>
     </div>
 ''',
         'singleTier': True,
         'tiers': False,
-        'groups_sub': 'Every system ships with its own configuration module, so prices, rewards, timers and visuals change without touching the core scripts.',
+        'groups_sub': 'Every system has its own configuration module, so prices, rewards, timers and visuals change without touching the core scripts.',
         'groups': [
             {'t': 'Monetisation', 'i': [
                 'Complete Robux shop', 'Game Pass shop and gifting',
@@ -556,8 +536,8 @@ PRODUCTS = [
         'premPrice': '$19.99',
         'paidName': 'UI Pack',
         'featsLabel': 'Highlights',
-        'priceNote': 'One-time purchase \u00b7 Instant download',
-        'buyFoot': 'Sold in partnership with Viral Templates.',
+        'priceNote': 'Instant download',
+        'buyFoot': 'Sold by Viral Templates. Checkout opens on their store.',
         'buy_paid': [
             '11+ complete UI systems',
             'Front end and back end included',
@@ -576,13 +556,12 @@ PRODUCTS = [
             {'type': 'image', 'src': '/images/PackThumbnail2.jpg'},
         ],
         'ogimg': '/images/UiPackUpdated.jpg',
-        'pitch': ('Building Roblox systems of your own?',
-                  'I am open to stocking a small number of systems I did not make. '
-                  'If yours would sit well alongside the rest of the shelf, send it over.',
+        'pitch': ('Want to see your product on this page?',
+                  'If you have built something for Roblox and think it fits here, get in touch and we can work something out.',
                   'Get in touch', '/contact/'),
     },
     # ------------------------------------------------------------------
-    #  HIDDEN — page still builds and works by direct URL, but it is not
+    #  HIDDEN, page still builds and works by direct URL, but it is not
     #  listed anywhere and is marked noindex. Remove 'hidden' to relist.
     # ------------------------------------------------------------------
     {
@@ -593,7 +572,6 @@ PRODUCTS = [
         'meta': 'A complete in-game shop for Roblox with categories, item previews and buy confirmations.',
         'lead': 'A complete in-game shop. Categories, item previews, buy confirmations and a purchase log, all working out of the box on PC and mobile.',
         'video_url': 'https://www.youtube.com/watch?v=W4TD81WCRQc',
-        'video_note': 'The full build is walked through end to end.',
         'tiers_sub': 'The back end is identical in both. The paid build is the same shop, further along.',
         'both': COMMON_BOTH,
         'free_sub': 'The build from the tutorial, exactly as shown.',

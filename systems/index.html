@@ -115,9 +115,10 @@ const SYSTEMS=[
   {
     name:"ASMR Butter",
     cat:"Audio",
-    desc:"Butter you sink into, plus a crunchy version with a shell that cracks open underfoot. Free models and all four scripts.",
+    desc:"Butter that dents when you stand on it, plus a crunchy version with a hard shell that cracks apart. Free models and all four scripts.",
     href:"/systems/asmr-butter/",
     hasFree:true, hasPrem:true, pr:"$1.99",
+    badge:"New",
     icon:"butter",
     img:"/images/ASMRButter1.jpg"
   },
@@ -142,10 +143,10 @@ const SYSTEMS=[
   {
     name:"Essential STUD UI Pack",
     cat:"UI",
-    desc:"11+ fully scripted UI systems \u2014 shops, rewards, codes, leaderboards and settings. Built by Viral Templates.",
+    desc:"11+ fully scripted UI systems: shops, rewards, codes, leaderboards and settings. Built by Viral Templates.",
     href:"/systems/essential-ui-pack/",
     hasFree:false, hasPrem:true, pr:"$19.99",
-    partner:true,
+    badge:"Partner",
     icon:"layout",
     img:"/images/UiPackUpdated.jpg"
   }
@@ -179,12 +180,12 @@ function ffCard(s){
         : `<div class="ff-ct-bg" style="background:linear-gradient(135deg,#0d1422,#162235)"></div>
       <div style="opacity:0.4;position:relative;z-index:1;color:var(--tx);">${ffIcon(s.icon,42)}</div>`}
       <div class="ff-ct-ov"></div>
+      ${s.badge?`<span class="ff-badge${s.badge==='Partner'?' pt':''}">${s.badge}</span>`:''}
     </div>
     <div class="ff-cb">
       <div class="ff-pills">
-        ${s.partner?'<span class="ff-pill ff-pill-partner">Partner</span>':''}
         ${s.hasFree?'<span class="ff-pill ff-pill-free">Free</span>':''}
-        ${s.hasPrem?'<span class="ff-pill ff-pill-prem"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;vertical-align:-2px;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg> Premium</span>':''}
+        ${(s.hasPrem&&s.badge!=='Partner')?'<span class="ff-pill ff-pill-prem"><svg class="ffic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;vertical-align:-2px;" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z" /></svg> Drop-in</span>':''}
       </div>
       <div class="ff-cn">${s.name}</div>
       <div class="ff-cd">${s.desc}</div>

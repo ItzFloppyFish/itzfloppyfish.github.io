@@ -25,11 +25,11 @@ Everything about a product lives in one place: the `PRODUCTS` list in `_gen.py`.
 | `js/product.js` | Carousel, buy panel, script vault, mobile sticky bar |
 | `scripts/<slug>/*.lua` | The real script source, fetched and cached at page load |
 
-Product pages contain **no styling and no logic** — only a `PRODUCT`, `MEDIA`
+Product pages contain **no styling and no logic**, only a `PRODUCT`, `MEDIA`
 and `SCRIPTS` config object. Never paste CSS or JS into a product page; it
 belongs in the two shared files or it will drift between products.
 
-## Before launch — values still needed
+## Before launch, values still needed
 
 Open `_gen.py` and fill the block marked **VALUES STILL NEEDED**:
 
@@ -37,7 +37,7 @@ Open `_gen.py` and fill the block marked **VALUES STILL NEEDED**:
 |---|---|
 | `BUTTER_FREE_KEY` | Payhip key for the free butter models |
 | `BUTTER_PAID_KEY` | Payhip key for the butter drop-in build |
-| `BUTTER_VIDEO_ID` | 11-char YouTube id. Leaving it blank hides the video slide and the tutorial button — it does not break the page. |
+| `BUTTER_VIDEO_ID` | 11-char YouTube id. Leaving it blank hides the video slide and the tutorial button, it does not break the page. |
 | `UIPACK_KEY` | Payhip key for the Essential STUD UI Pack |
 
 Any key left as `TODO_...` renders its button greyed out and unclickable
@@ -49,9 +49,9 @@ after editing.
 | Field | Effect |
 |---|---|
 | `hidden: True` | Page still builds and works by direct URL, but is `noindex` and must also be removed from the `SYSTEMS`/`FEATURED` arrays by hand |
-| `singleTier: True` | No free/paid tabs — one price, one buy button. Used for resold products. |
+| `singleTier: True` | No free/paid tabs, one price, one buy button. Used for resold products. |
 | `paidName` | Label for the paid tier. Defaults to `Drop-in`. |
-| `banner` | Raw HTML inserted under the hero — used for the partner notice. |
+| `banner` | Raw HTML inserted under the hero, used for the partner notice. |
 | `groups` | Category feature grid instead of free/paid tier cards. |
 | `extraBtns` | Extra buttons under the buy button (icon keys: `play`, `doc`). |
 
@@ -61,12 +61,12 @@ Two accents only: neutral glass for free/secondary, the blue→cyan gradient for
 premium/primary. Green appears in exactly one place (the "Copied" flash) and red
 in one (contact form errors). Amber survives only on the testimonial stars,
 where it reads as an icon rather than an accent. Adding a third accent hue is
-what made the old pages look generated — don't.
+what made the old pages look generated, don't.
 
 ## Selling someone else's product
 
 A Payhip product key belongs to the store that created it. You cannot paste
-another seller's key into your own store — the checkout, the payment and the
+another seller's key into your own store, the checkout, the payment and the
 file delivery all sit on their account, so the sale never touches yours.
 Two legitimate routes:
 

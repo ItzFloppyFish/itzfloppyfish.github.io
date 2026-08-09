@@ -1,4 +1,4 @@
-/* === FLOPPY FISH — PRODUCT PAGE LOGIC ================================
+/* === FLOPPY FISH, PRODUCT PAGE LOGIC ================================
    Driven entirely by three globals the page defines BEFORE this loads:
      PRODUCT  – pricing, payhip keys, feature lists
      MEDIA    – carousel entries  { type:"image", src } | { type:"video", id }
@@ -108,7 +108,7 @@
   }
 
   /* =================================================================
-     2. BUY PANEL  — defaults to FREE
+     2. BUY PANEL, defaults to FREE
      ================================================================= */
   function featRow(text, prem) {
     return '<div class="ff-buy-fi' + (prem ? ' pm' : '') + '">' +
@@ -140,7 +140,7 @@
       bc.innerHTML =
         '<div class="ff-pr-row"><span class="ff-pr">' + esc(P.premPrice) + '</span>' +
         (showOrig1 ? '<span class="ff-pr-orig">' + esc(P.premOriginal) + '</span>' : '') + '</div>' +
-        '<div class="ff-pr-note">' + esc(P.priceNote || 'One-time purchase · Instant download') + '</div>' +
+        '<div class="ff-pr-note">' + esc(P.priceNote || 'Instant download') + '</div>' +
         premBtn +
         (P.extraBtns || []).map(function (b) {
           return '<a class="ffbtn ffbtn-ghost" href="' + esc(b.href) + '" target="_blank" rel="noopener">' +
@@ -159,17 +159,17 @@
         freeBtn + premBtn;
       bf.innerHTML = '<div class="ff-buy-fl">What\'s in the free download</div>' +
         (P.freeFeatures || []).map(function (f) { return featRow(f, false); }).join('') +
-        '<div class="ff-buy-foot">The scripts are on this page too — copy them straight from the vault below.</div>';
+        '<div class="ff-buy-foot">Every script is on this page as well, free to copy.</div>';
     } else {
       var showOrig = P.premOriginal && P.premOriginal !== P.premPrice;
       bc.innerHTML =
         '<div class="ff-pr-row"><span class="ff-pr">' + esc(P.premPrice) + '</span>' +
         (showOrig ? '<span class="ff-pr-orig">' + esc(P.premOriginal) + '</span>' : '') + '</div>' +
-        '<div class="ff-pr-note">One-time purchase · Instant download · Yours forever</div>' +
+        '<div class="ff-pr-note">Instant download</div>' +
         premBtn + freeBtn;
       bf.innerHTML = '<div class="ff-buy-fl">' + esc(P.paidName) + ' adds</div>' +
         (P.premFeatures || []).map(function (f) { return featRow(f, true); }).join('') +
-        '<div class="ff-buy-foot">Buying is optional. It saves you the setup, nothing more.</div>';
+        '<div class="ff-buy-foot">Optional. It only saves you the setup time.</div>';
     }
   }
 
@@ -177,7 +177,7 @@
      3. SCRIPT VAULT
         Files are prefetched on load and cached, so the copy handler is
         SYNCHRONOUS. Awaiting a fetch inside a click handler breaks
-        clipboard writes in iOS Safari — don't reintroduce that.
+        clipboard writes in iOS Safari, don't reintroduce that.
      ================================================================= */
   var cache = Object.create(null);   // file -> source string
   var failed = Object.create(null);
@@ -208,7 +208,7 @@
         ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;padding:0;border:none;outline:none;opacity:0;font-size:16px;';
         document.body.appendChild(ta);
 
-        // iOS refuses .select() on a readonly field — use a range instead.
+        // iOS refuses .select() on a readonly field, use a range instead.
         var ios = /ipad|iphone|ipod/i.test(navigator.userAgent);
         if (ios) {
           var range = document.createRange();
@@ -256,7 +256,7 @@
     var live = SCRIPTS_IN.filter(function (s) { return !!cache[s.file]; });
 
     if (!SCRIPTS_IN.length || !live.length) {
-      wrap.innerHTML = '<div class="ffdl-empty">The scripts for this system aren\'t up yet — ' +
+      wrap.innerHTML = '<div class="ffdl-empty">The scripts for this system aren\'t up yet, ' +
         'they\'re in the video description in the meantime.</div>';
       return;
     }
