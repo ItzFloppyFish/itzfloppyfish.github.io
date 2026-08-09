@@ -7,6 +7,7 @@ CHECK = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
 SPARK = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18h20l-1.5-9-4.5 4-4-6-4 6-4.5-4z"/></svg>'
 CODEIC = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>'
 ARROW = '<svg class="ffarr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>'
+ARROW_R = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>'
 PLAY = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>'
 VAULTIC = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>'
 CHEV = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>'
@@ -55,10 +56,15 @@ FOOTER = '''<footer class="ffoot">
       <span class="ffoot-sep">&#183;</span>
       <span>Not affiliated with Roblox Corporation.</span>
     </div>
-    <div class="ffoot-bot-right">v3.1.0</div>
+    <div class="ffoot-bot-right">v3.3.0</div>
   </div>
 </footer>'''
 
+
+
+# =====================================================================
+#  TEMPLATE PIECES
+# =====================================================================
 
 def tier_card(name, tag, sub, items, premium=False):
     ic = SPARK if premium else CHECK
@@ -75,38 +81,161 @@ def tier_card(name, tag, sub, items, premium=False):
         </div>''' % (' pm' if premium else '', name, tag, sub, lis)
 
 
-def build(p):
+def tiers_section(p):
+    if not p.get('tiers'):
+        return ''
     both = ''.join('\n          <div class="ffboth-i"><span class="d"></span><span>%s</span></div>' % b
                    for b in p['both'])
+    return '''      <section class="ffsec">
+        <h2 class="ffsec-h">Free or %(paid_lc)s</h2>
+        <p class="ffsec-sub">%(tiers_sub)s</p>
 
-    setup_html = ''
-    if p.get('setup'):
-        steps = ''.join('\n            <li>%s</li>' % s for s in p['setup'])
-        setup_html = '''
-      <section class="ffsec">
-        <h2 class="ffsec-h">Before you start</h2>
+        <div class="ffboth">
+          <div class="ffboth-t">In both versions</div>
+          <div class="ffboth-g">%(both)s
+          </div>
+        </div>
+
+        <div class="fftiers">
+%(free_card)s
+%(paid_card)s
+        </div>
+
+        <p class="ffnote">%(note)s</p>
+      </section>
+
+''' % {
+        'paid_lc': p['paidName'].lower(),
+        'tiers_sub': p['tiers_sub'], 'both': both,
+        'free_card': tier_card('Free', 'Free', p['free_sub'], p['free_items'], False),
+        'paid_card': tier_card(p['paidName'], p['premPrice'], p['paid_sub'], p['paid_items'], True),
+        'note': p['note'],
+    }
+
+
+def grid_section(p):
+    if not p.get('groups'):
+        return ''
+    cols = ''.join('''
+          <div class="ffgrp">
+            <div class="ffgrp-h">%s</div>
+            <ul>%s
+            </ul>
+          </div>''' % (g['t'], ''.join('\n              <li>%s</li>' % i for i in g['i']))
+                   for g in p['groups'])
+    return '''      <section class="ffsec">
+        <h2 class="ffsec-h">What's inside</h2>
         <p class="ffsec-sub">%s</p>
-        <div class="ffsetup">
-          <ol>%s
-          </ol>
+        <div class="ffgrid">%s
         </div>
       </section>
-''' % (p['setup_sub'], steps)
 
-    actions = '''        <a href="#ffdl" class="ffbtn ffbtn-ghost" id="ffJumpScripts">%s<span>%s</span>%s</a>
-        <a href="%s" class="ffbtn ffbtn-ghost" target="_blank" rel="noopener">%s<span>Watch the tutorial</span></a>''' % (
-        CODEIC, p['jump_label'], ARROW, p['video_url'], PLAY)
+''' % (p['groups_sub'], cols)
+
+
+def video_section(p):
+    if not p.get('video_url'):
+        return ''
+    return '''      <section class="ffsec">
+        <a class="ffvid" href="%s" target="_blank" rel="noopener">
+          <span class="ffvid-ic">%s</span>
+          <span class="ffvid-tx">
+            <span class="t">Setup is in the video</span>
+            <span class="s">%s</span>
+          </span>
+          <span class="ffvid-ar">%s</span>
+        </a>
+      </section>
+
+''' % (p['video_url'], PLAY, p['video_note'], ARROW_R)
+
+
+def vault_section(p):
+    if not p.get('scripts'):
+        return ''
+    return '''      <section class="ffsec">
+        <h2 class="ffsec-h">The scripts</h2>
+        <p class="ffsec-sub">%(vault_sub)s</p>
+        <div class="ffdl open" id="ffdl">
+          <button class="ffdl-head" id="ffdlHead" type="button" aria-expanded="true" aria-controls="ffdlBody">
+            <span class="ffdl-head-ic">%(vaultic)s</span>
+            <span class="ffdl-head-tx">
+              <span class="t">Copy the code from the video</span>
+              <span class="s">Every script, in full, free</span>
+            </span>
+            <span class="ffdl-chev" aria-hidden="true">%(chev)s</span>
+          </button>
+          <div class="ffdl-body" id="ffdlBody" role="region" aria-labelledby="ffdlHead">
+            <div class="ffdl-inner" id="ffdlRows"></div>
+          </div>
+        </div>
+      </section>
+
+''' % {'vault_sub': p['vault_sub'], 'vaultic': VAULTIC, 'chev': CHEV}
+
+
+def pitch_section(p):
+    if not p.get('pitch'):
+        return ''
+    t, b, label, href = p['pitch']
+    return '''      <section class="ffsec">
+        <div class="ffpitch">
+          <div class="ffpitch-tx">
+            <span class="t">%s</span>
+            <span class="s">%s</span>
+          </div>
+          <a class="ffbtn ffbtn-ghost" href="%s">%s</a>
+        </div>
+      </section>
+
+''' % (t, b, href, label)
+
+
+def build(p):
+    p.setdefault('paidName', 'Drop-in')
+    p.setdefault('tiers', True)
+    p.setdefault('scripts', [])
+    p.setdefault('singleTier', False)
+
+    acts = []
+    if p.get('scripts'):
+        acts.append('        <a href="#ffdl" class="ffbtn ffbtn-ghost" id="ffJumpScripts">%s<span>%s</span>%s</a>'
+                    % (CODEIC, 'Copy the scripts — free', ARROW))
+    if p.get('video_url'):
+        acts.append('        <a href="%s" class="ffbtn ffbtn-ghost" target="_blank" rel="noopener">%s<span>Watch the tutorial</span></a>'
+                    % (p['video_url'], PLAY))
+    for b in p.get('heroBtns', []):
+        acts.append('        <a href="%s" class="ffbtn ffbtn-ghost" target="_blank" rel="noopener">%s<span>%s</span></a>'
+                    % (b['href'], b.get('icon', ''), b['label']))
+
+    tabs = '' if p['singleTier'] else '''        <div class="ff-buy-tabs" role="tablist" aria-label="Version">
+          <button class="ff-buy-tb fr act" id="fftbf" type="button" role="tab" aria-selected="true">Free</button>
+          <button class="ff-buy-tb pm" id="fftbp" type="button" role="tab" aria-selected="false">%s %s</button>
+        </div>
+''' % (SPARK, p['paidName'])
 
     cfg = {
         'name': p['title'],
-        'freeKey': p['freeKey'],
+        'freeKey': p.get('freeKey', ''),
         'premKey': p['premKey'],
         'premPrice': p['premPrice'],
         'premOriginal': p.get('premOriginal', p['premPrice']),
-        'freeLabel': p['freeLabel'],
-        'freeFeatures': p['buy_free'],
-        'premFeatures': p['buy_prem'],
+        'paidName': p['paidName'],
+        'freeLabel': p.get('freeLabel', 'Download the free files'),
+        'freeFeatures': p.get('buy_free', []),
+        'premFeatures': p['buy_paid'],
     }
+    if p['singleTier']:
+        cfg['singleTier'] = True
+        cfg['featsLabel'] = p.get('featsLabel', 'Includes')
+        if p.get('priceNote'):
+            cfg['priceNote'] = p['priceNote']
+        if p.get('buyFoot'):
+            cfg['buyFoot'] = p['buyFoot']
+        if p.get('extraBtns'):
+            cfg['extraBtns'] = p['extraBtns']
+
+    noindex = '\n<meta name="robots" content="noindex">' if p.get('hidden') else ''
 
     return '''<!DOCTYPE html>
 <html lang="en">
@@ -115,12 +244,12 @@ def build(p):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/images/YouTube%%20Profile%%20Picture.png">
 <title>%(title)s | Itz_FloppyFish</title>
-<meta name="description" content="%(meta)s">
+<meta name="description" content="%(meta)s">%(noindex)s
 <link rel="canonical" href="https://itzfloppyfish.com%(slug)s">
 <meta property="og:type" content="product">
 <meta property="og:title" content="%(title)s | Itz_FloppyFish">
 <meta property="og:description" content="%(meta)s">
-<meta property="og:url" content="https://itzfloppyfish.com%(slug)s">
+<meta property="og:url" content="https://itzfloppyfish.com%(slug)s">%(ogimg)s
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
@@ -142,8 +271,7 @@ def build(p):
     <div class="ffdtl-actions">
 %(actions)s
     </div>
-    <p class="ffdtl-honest">%(honest)s</p>
-  </header>
+%(banner)s  </header>
 
   <div class="ffmedia" id="ffmedia">
     <div class="ffcar" id="ffcar">
@@ -161,52 +289,11 @@ def build(p):
   <div class="ffdtl-cols">
     <div class="ffdtl-main">
 
-%(setup)s
-      <section class="ffsec">
-        <h2 class="ffsec-h">The scripts</h2>
-        <p class="ffsec-sub">%(vault_sub)s</p>
-        <div class="ffdl open" id="ffdl">
-          <button class="ffdl-head" id="ffdlHead" type="button" aria-expanded="true" aria-controls="ffdlBody">
-            <span class="ffdl-head-ic">%(vaultic)s</span>
-            <span class="ffdl-head-tx">
-              <span class="t">Copy the code from the video</span>
-              <span class="s">Every script, in full, free — no sign-up, no paywall</span>
-            </span>
-            <span class="ffdl-chev" aria-hidden="true">%(chev)s</span>
-          </button>
-          <div class="ffdl-body" id="ffdlBody" role="region" aria-labelledby="ffdlHead">
-            <div class="ffdl-inner" id="ffdlRows"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="ffsec">
-        <h2 class="ffsec-h">Free or premium</h2>
-        <p class="ffsec-sub">%(tiers_sub)s</p>
-
-        <div class="ffboth">
-          <div class="ffboth-t">In both versions</div>
-          <div class="ffboth-g">%(both)s
-          </div>
-        </div>
-
-        <div class="fftiers">
-%(free_card)s
-%(prem_card)s
-        </div>
-
-        <p class="ffnote">%(note)s</p>
-      </section>
-
-    </div>
+%(sections)s    </div>
 
     <aside>
       <div class="ff-buy">
-        <div class="ff-buy-tabs" role="tablist" aria-label="Version">
-          <button class="ff-buy-tb fr act" id="fftbf" type="button" role="tab" aria-selected="true">Free</button>
-          <button class="ff-buy-tb pm" id="fftbp" type="button" role="tab" aria-selected="false">%(spark)s Premium</button>
-        </div>
-        <div id="ffbc"></div>
+%(tabs)s        <div id="ffbc"></div>
         <div class="ff-buy-feats" id="ffbf"></div>
       </div>
     </aside>
@@ -218,11 +305,8 @@ def build(p):
 </div>
 <script src="/js/main.js"></script>
 <script>
-/* ---------------------------------------------------------------
-   Product config. This is the only part of the page that changes
-   between products — everything else lives in /css/product.css
-   and /js/product.js.
-   --------------------------------------------------------------- */
+/* Product config. The only part of this page that changes between
+   products — styling lives in /css/product.css, logic in /js/product.js. */
 var PRODUCT = %(cfg)s;
 
 var MEDIA = %(media)s;
@@ -233,17 +317,18 @@ var SCRIPTS = %(scripts)s;
 </body>
 </html>
 ''' % {
-        'title': p['title'], 'meta': p['meta'], 'slug': p['slug'],
+        'title': p['title'], 'meta': p['meta'], 'slug': p['slug'], 'noindex': noindex,
+        'ogimg': ('\n<meta property="og:image" content="https://itzfloppyfish.com%s">' % p['ogimg']) if p.get('ogimg') else '',
         'nav': NAV, 'footer': FOOTER,
-        'lead': p['lead'], 'honest': p['honest'], 'actions': actions,
-        'tiers_sub': p['tiers_sub'], 'both': both,
-        'free_card': tier_card(p['free_name'], 'Free', p['free_sub'], p['free_items'], False),
-        'prem_card': tier_card('Premium', p['premPrice'], p['prem_sub'], p['prem_items'], True),
-        'note': p['note'], 'setup': setup_html, 'vault_sub': p['vault_sub'],
-        'vaultic': VAULTIC, 'chev': CHEV, 'spark': SPARK,
+        'lead': p['lead'],
+        'actions': '\n'.join(acts),
+        'banner': p.get('banner', ''),
+        'sections': vault_section(p) + video_section(p) + grid_section(p) + tiers_section(p) + pitch_section(p),
+        'tabs': tabs,
         'cfg': json.dumps(cfg, indent=2),
         'media': json.dumps(p['media'], indent=2),
-        'scripts': json.dumps(p['scripts'], indent=2),
+        'scripts': json.dumps([{'name': s['name'], 'kind': s['kind'], 'file': s['file']}
+                               for s in p.get('scripts', [])], indent=2),
     }
 
 
@@ -261,69 +346,125 @@ REDIRECT = '''<!DOCTYPE html>
 </html>
 '''
 
+# =====================================================================
+#  >>> VALUES STILL NEEDED BEFORE LAUNCH <<<
+#  Anything left as TODO_ renders its button greyed out and unclickable
+#  rather than sending a buyer to a dead Payhip link.
+# =====================================================================
+BUTTER_FREE_KEY = 'lzCJM'
+BUTTER_PAID_KEY = '8oPMH'
+BUTTER_VIDEO_ID = 'TR973nb8pCE'
+UIPACK_KEY      = 'TODO_uipack'  # see README — cannot be another store's id
+
+
+COMMON_BOTH = [
+    'The exact system from the video',
+    'Works on PC, mobile and console',
+    'Full readable source — nothing obfuscated',
+    'Free to use in your own games, commercial or not',
+]
+
 PRODUCTS = [
+    # ------------------------------------------------------------------
+    {
+        'key': 'asmr-butter',
+        'slug': '/systems/asmr-butter/',
+        'title': 'ASMR Butter',
+        'meta': 'Walkable ASMR butter for Roblox. Sink into a soft block, or crack the crust on the crunchy version. Free Blender models and all four scripts, or the drop-in build.',
+        'lead': 'Butter you sink into. Stand on the soft block and it dents under you, slowly easing back once you step off. The crunchy version adds a brittle shell that splits open as you press in and closes again behind you.',
+        'video_url': 'https://www.youtube.com/watch?v=' + BUTTER_VIDEO_ID if BUTTER_VIDEO_ID else '',
+        'video_note': 'The models need bones and the sounds need naming. Both are covered start to finish.',
+        'tiers_sub': 'Same system either way. The difference is how much of it is already built.',
+        'both': COMMON_BOTH,
+        'free_sub': 'The models, plus every script on this page.',
+        'free_items': [
+            'Both Blender models — smooth and crunchy',
+            'All four scripts, copyable below',
+            'You add the sounds and set the models up',
+        ],
+        'paid_sub': 'The same thing, already put together.',
+        'paid_items': [
+            'Place file with everything assembled',
+            'Butter sounds included and wired up',
+            'Both butter types ready to walk on',
+            'Priority support if something breaks',
+        ],
+        'note': '<b>To be clear:</b> the drop-in build adds nothing you can\'t make from the free files. It is a shortcut, not a better system.',
+        'vault_sub': 'All four scripts in full, straight off the page.',
+        'freeKey': BUTTER_FREE_KEY,
+        'premKey': BUTTER_PAID_KEY,
+        'premPrice': '$1.99',
+        'freeLabel': 'Download the free models',
+        'buy_free': [
+            'Both Blender models',
+            'All four scripts (copyable below)',
+            'No email wall, no account needed',
+        ],
+        'buy_paid': [
+            'Place file, everything assembled',
+            'Butter sounds included',
+            'Both butter types ready to go',
+            'Priority support',
+        ],
+        'media': ([{'type': 'video', 'id': BUTTER_VIDEO_ID}] if BUTTER_VIDEO_ID else []) +
+                 [{'type': 'image', 'src': '/images/ASMRButter1.jpg'}],
+        'ogimg': '/images/ASMRButter1.jpg',
+        'scripts': [
+            {'name': 'ASMRCore', 'kind': 'ModuleScript', 'file': '/scripts/asmr-butter/ASMRCore.lua'},
+            {'name': 'ASMRControls', 'kind': 'ModuleScript', 'file': '/scripts/asmr-butter/ASMRControls.lua'},
+            {'name': 'Butter', 'kind': 'LocalScript', 'file': '/scripts/asmr-butter/Butter.lua'},
+            {'name': 'CrunchyButter', 'kind': 'LocalScript', 'file': '/scripts/asmr-butter/CrunchyButter.lua'},
+        ],
+    },
     # ------------------------------------------------------------------
     {
         'key': 'asmr-bubble-wrap',
         'slug': '/systems/asmr-bubble-wrap/',
         'title': 'ASMR Bubble Wrap',
-        'meta': 'Poppable ASMR bubble wrap for Roblox. Walk over it and every bubble squashes with a real pop. Free model and full scripts, or the ready-to-go premium build.',
-        'lead': 'Bubble wrap you can actually walk on. Every bubble squashes under your feet with a proper pop, re-inflates a few seconds later, and never sounds the same twice — the pitch and volume shift slightly on every pop, so a whole sheet doesn\'t turn into a machine gun.',
-        'jump_label': 'Copy the scripts — free',
+        'meta': 'Poppable ASMR bubble wrap for Roblox. Walk over it and every bubble squashes with a real pop. Free model and both scripts, or the drop-in build.',
+        'lead': 'Bubble wrap you can actually walk on. Every bubble squashes under your feet with a proper pop, re-inflates a few seconds later, and never sounds the same twice — pitch and volume shift on every pop, so a whole sheet doesn\'t turn into a machine gun.',
         'video_url': 'https://www.youtube.com/watch?v=AfkSKUOUKA4',
-        'honest': 'Everything in the video is free. <b>Both scripts are right here on this page</b> and the model is a free download. Premium is the same system already assembled, for people who\'d rather not do the setup.',
+        'video_note': 'The sounds need naming and the models need tagging. Both are covered start to finish.',
         'tiers_sub': 'Same system either way. The difference is how much of it is already built.',
-        'both': [
-            'The exact system from the video',
-            'Works on PC, mobile and console',
-            'Full readable source — nothing obfuscated or locked',
-            'Free to use in your own games, commercial or not',
-        ],
-        'free_name': 'Free',
-        'free_sub': 'Everything shown in the tutorial, in pieces.',
+        'both': COMMON_BOTH,
+        'free_sub': 'The model, plus both scripts on this page.',
         'free_items': [
             'The bubble wrap Blender model',
-            'ASMRCore and Bubble scripts — copy them below',
-            'You add the sounds and place the bubbles yourself',
+            'Both scripts, copyable below',
+            'You add the sounds and place the bubbles',
         ],
-        'prem_sub': 'The same thing, already put together.',
-        'prem_items': [
-            'Drop-in place file — no setup at all',
+        'paid_sub': 'The same thing, already put together.',
+        'paid_items': [
+            'Place file with everything assembled',
             'Pop sound pack included and wired up',
             'Bubbles placed, tagged and tuned',
-            'Extra polish and effects from the video',
             'Priority support if something breaks',
         ],
-        'note': '<b>To be clear:</b> premium adds no capability you can\'t build from the free files. It is a shortcut, not a better system. If you have an hour and follow the video, you get the same result for nothing.',
-        'setup_sub': 'The free scripts run silently until these three things exist. If nothing pops, it is almost always one of these.',
-        'setup': [
-            'Script 1 must be a <b>ModuleScript named exactly <code>ASMRCore</code></b>, inside <code>ReplicatedStorage</code>. Script 2 looks it up by that name and will sit there doing nothing if it is spelled differently.',
-            'Create a <b>Folder in <code>ReplicatedStorage</code> called <code>ASMRSounds</code></b> and put your pop sounds in it, named <code>Pop1</code>, <code>Pop2</code>, <code>Pop3</code> and so on. The name prefix is how variations get picked — no folder means no audio.',
-            'Every bubble <b>Model</b> needs the attribute <code>ASMRType</code> set to the text <code>Bubble</code>, and at least one <b>BasePart</b> inside it. Models without the attribute are ignored completely.',
-        ],
-        'vault_sub': 'Both scripts in full, straight off the page. No character limit, no comment section, no description hunting.',
+        'note': '<b>To be clear:</b> the drop-in build adds nothing you can\'t make from the free files. It is a shortcut, not a better system.',
+        'vault_sub': 'Both scripts in full, straight off the page.',
         'freeKey': 'qdN84',
         'premKey': 'fV5h0',
         'premPrice': '$1.99',
         'freeLabel': 'Download the free model',
         'buy_free': [
             'The bubble wrap Blender model',
-            'Both scripts (also copyable below)',
+            'Both scripts (copyable below)',
             'No email wall, no account needed',
         ],
-        'buy_prem': [
-            'Drop-in place file, zero setup',
+        'buy_paid': [
+            'Place file, everything assembled',
             'Pop sound pack included',
             'Bubbles placed, tagged and tuned',
-            'Extra polish and effects',
             'Priority support',
         ],
-        'media': [{'type': 'video', 'id': 'AfkSKUOUKA4'}],
+        'media': [
+            {'type': 'video', 'id': 'AfkSKUOUKA4'},
+            {'type': 'image', 'src': '/images/BubbleWrapThumbnail.jpg'},
+        ],
+        'ogimg': '/images/BubbleWrapThumbnail.jpg',
         'scripts': [
-            {'name': 'ASMRCore', 'kind': 'ModuleScript', 'location': 'ReplicatedStorage',
-             'file': '/scripts/asmr-bubble-wrap/ASMRCore.lua'},
-            {'name': 'Bubble', 'kind': 'LocalScript', 'location': 'StarterPlayerScripts',
-             'file': '/scripts/asmr-bubble-wrap/Bubble.lua'},
+            {'name': 'ASMRCore', 'kind': 'ModuleScript', 'file': '/scripts/asmr-bubble-wrap/ASMRCore.lua'},
+            {'name': 'Bubble', 'kind': 'LocalScript', 'file': '/scripts/asmr-bubble-wrap/Bubble.lua'},
         ],
     },
     # ------------------------------------------------------------------
@@ -331,125 +472,165 @@ PRODUCTS = [
         'key': 'asmr-keyboard',
         'slug': '/systems/asmr-keyboard/',
         'title': 'ASMR Keyboard',
-        'meta': 'A giant walkable keyboard for Roblox. Every key drops and clicks as you step on it, with randomised colours and letters. Free model and full scripts, or the ready-to-go premium build.',
+        'meta': 'A giant walkable keyboard for Roblox. Every key drops and clicks as you step on it, with randomised colours and letters. Free model and both scripts, or the drop-in build.',
         'lead': 'A giant keyboard you walk across. Each key sinks under your weight with a clean mechanical click and springs back when you step off, and the keys colour themselves and pick their own letters on join, so no two servers look the same.',
-        'jump_label': 'Copy the scripts — free',
         'video_url': 'https://www.youtube.com/watch?v=IHcgO49qaJA',
-        'honest': 'Everything in the video is free. <b>Both scripts are right here on this page</b> and the key model is a free download. Premium is the same system already assembled, for people who\'d rather not do the setup.',
+        'video_note': 'Key naming and the letter setup both matter. Covered start to finish.',
         'tiers_sub': 'Same system either way. The difference is how much of it is already built.',
-        'both': [
-            'The exact system from the video',
-            'Works on PC, mobile and console',
-            'Full readable source — nothing obfuscated or locked',
-            'Free to use in your own games, commercial or not',
-        ],
-        'free_name': 'Free',
-        'free_sub': 'Everything shown in the tutorial, in pieces.',
+        'both': COMMON_BOTH,
+        'free_sub': 'The model, plus both scripts on this page.',
         'free_items': [
             'The Key Blender model from the video',
-            'Both scripts — copy them below',
-            'You lay out the keyboard and add the sound yourself',
+            'Both scripts, copyable below',
+            'You lay out the keyboard and add the sound',
         ],
-        'prem_sub': 'The same thing, already put together.',
-        'prem_items': [
+        'paid_sub': 'The same thing, already put together.',
+        'paid_items': [
             'Full keyboard laid out and ready to drop in',
             'Multiple keypress sound variations',
             'Key model included and set up',
-            'Tuned drop distance, timing and detection',
             'Priority support if something breaks',
         ],
-        'note': '<b>To be clear:</b> premium adds no capability you can\'t build from the free files. It is a shortcut, not a better system. If you have an hour and follow the video, you get the same result for nothing.',
-        'setup_sub': 'A few things the scripts assume. If your keys do nothing, it is almost always one of these.',
-        'setup': [
-            'Every key must be <b>named exactly <code>Key</code></b> — that name is what both scripts search for. If a key is a <b>Model</b> rather than a single part, it needs its <code>PrimaryPart</code> set, or it gets skipped.',
-            'The click sound is set inside the LocalScript as <code>SoundId</code>. The one in the video is included, but swap in your own asset id whenever you like.',
-            'For the letters, put a <b>SurfaceGui with a TextLabel</b> on each key. The server script picks a random colour and letter per key and sets the text colour so it stays readable.',
-        ],
-        'vault_sub': 'Both scripts in full, straight off the page. No character limit, no comment section, no description hunting.',
+        'note': '<b>To be clear:</b> the drop-in build adds nothing you can\'t make from the free files. It is a shortcut, not a better system.',
+        'vault_sub': 'Both scripts in full, straight off the page.',
         'freeKey': '4wF3G',
         'premKey': 'eKqY7',
         'premPrice': '$1.99',
         'freeLabel': 'Download the free model',
         'buy_free': [
             'The Key Blender model',
-            'Both scripts (also copyable below)',
+            'Both scripts (copyable below)',
             'No email wall, no account needed',
         ],
-        'buy_prem': [
+        'buy_paid': [
             'Full keyboard laid out, zero setup',
             'Multiple keypress sound variations',
             'Key model included and set up',
-            'Tuned timing and detection',
             'Priority support',
         ],
         'media': [
             {'type': 'video', 'id': 'IHcgO49qaJA'},
             {'type': 'image', 'src': '/images/NewKey.jpg'},
         ],
+        'ogimg': '/images/NewKey.jpg',
         'scripts': [
-            {'name': 'ASMRKeyboard', 'kind': 'LocalScript', 'location': 'StarterPlayerScripts',
-             'file': '/scripts/asmr-keyboard/ASMRKeyboard.lua'},
-            {'name': 'KeyColour', 'kind': 'Script', 'location': 'ServerScriptService',
-             'file': '/scripts/asmr-keyboard/KeyColour.lua'},
+            {'name': 'ASMRKeyboard', 'kind': 'LocalScript', 'file': '/scripts/asmr-keyboard/ASMRKeyboard.lua'},
+            {'name': 'KeyColour', 'kind': 'Script', 'file': '/scripts/asmr-keyboard/KeyColour.lua'},
         ],
     },
     # ------------------------------------------------------------------
     {
+        'key': 'essential-ui-pack',
+        'slug': '/systems/essential-ui-pack/',
+        'title': 'Essential STUD UI Pack',
+        'meta': 'Eleven-plus fully scripted Roblox UI systems — shops, rewards, codes, leaderboards and settings — with secure server-side handling. Built by Viral Templates.',
+        'lead': 'Eleven-plus complete UI systems, front end and back end, ready to drop into a live game. Shops, daily rewards, codes, leaderboards, settings and the data layer behind them are already built, animated and validated server-side.',
+        'banner': '''    <div class="ffpartner">
+      <span class="ffpartner-b">Partner</span>
+      <span class="ffpartner-t">Built by <b>Viral Templates</b>, stocked here as part of an ongoing partnership.</span>
+    </div>
+''',
+        'singleTier': True,
+        'tiers': False,
+        'groups_sub': 'Every system ships with its own configuration module, so prices, rewards, timers and visuals change without touching the core scripts.',
+        'groups': [
+            {'t': 'Monetisation', 'i': [
+                'Complete Robux shop', 'Game Pass shop and gifting',
+                'Developer Product shop and gifting', 'Packs system']},
+            {'t': 'Rewards &amp; retention', 'i': [
+                'Daily login rewards', 'Playtime rewards', 'Group rewards',
+                'Wheel spin with free-spin countdown', 'Purchasable extra spins']},
+            {'t': 'Player engagement', 'i': [
+                'Redeemable codes', 'Top players leaderboard',
+                'Side promotions', 'Animated notification system']},
+            {'t': 'Player experience', 'i': [
+                'Animated loading screen with skip', 'Settings menu with music and SFX sliders',
+                'Background music system', 'Cash gain and loss animations',
+                'Purchase celebration confetti', 'Fully animated buttons and UI']},
+            {'t': 'Backend &amp; admin', 'i': [
+                'Secure data saving via ProfileStore', 'Server-side purchase validation',
+                'Admin commands: GiveCash, GivePack, GivePass, GiveProduct',
+                'Clean, organised, expandable codebase']},
+        ],
+        'premKey': UIPACK_KEY,
+        'premPrice': '$19.99',
+        'paidName': 'UI Pack',
+        'featsLabel': 'Highlights',
+        'priceNote': 'One-time purchase \u00b7 Instant download',
+        'buyFoot': 'Sold in partnership with Viral Templates.',
+        'buy_paid': [
+            '11+ complete UI systems',
+            'Front end and back end included',
+            'Secure server-side validation',
+            'ProfileStore data saving',
+            'Config modules for every system',
+        ],
+        'extraBtns': [
+            {'label': 'Try it in Roblox', 'href': 'https://www.roblox.com/games/102413875159603/Viral-Templates', 'icon': 'play'},
+            {'label': 'Viral Templates terms', 'href': 'https://viraltemplates.co/terms', 'icon': 'doc'},
+        ],
+        'media': [
+            {'type': 'image', 'src': '/images/UiPackUpdated.jpg'},
+            {'type': 'image', 'src': '/images/EssentialUiPack1.jpg'},
+            {'type': 'image', 'src': '/images/PackUpdated.jpg'},
+            {'type': 'image', 'src': '/images/PackThumbnail2.jpg'},
+        ],
+        'ogimg': '/images/UiPackUpdated.jpg',
+        'pitch': ('Building Roblox systems of your own?',
+                  'I am open to stocking a small number of systems I did not make. '
+                  'If yours would sit well alongside the rest of the shelf, send it over.',
+                  'Get in touch', '/contact/'),
+    },
+    # ------------------------------------------------------------------
+    #  HIDDEN — page still builds and works by direct URL, but it is not
+    #  listed anywhere and is marked noindex. Remove 'hidden' to relist.
+    # ------------------------------------------------------------------
+    {
         'key': 'item-shop',
+        'hidden': True,
         'slug': '/systems/item-shop/',
         'title': 'Item Shop System',
-        'meta': 'A complete in-game shop for Roblox with categories, item previews and buy confirmations. Free tutorial version, or the polished premium build.',
-        'lead': 'A complete in-game shop. Categories, item previews, buy confirmations and a purchase log, all working out of the box on PC and mobile, so you can drop it in and get back to building the actual game.',
-        'jump_label': 'Jump to the scripts',
+        'meta': 'A complete in-game shop for Roblox with categories, item previews and buy confirmations.',
+        'lead': 'A complete in-game shop. Categories, item previews, buy confirmations and a purchase log, all working out of the box on PC and mobile.',
         'video_url': 'https://www.youtube.com/watch?v=W4TD81WCRQc',
-        'honest': 'The full tutorial build is free — the video walks through all of it. Premium is the same shop with the interface finished off and the extras wired up.',
-        'tiers_sub': 'The back end is identical in both. Premium is the same shop, further along.',
-        'both': [
-            'The same shop back end and data handling',
-            'Works on PC, mobile and console',
-            'Full readable source — nothing obfuscated or locked',
-            'Free to use in your own games, commercial or not',
-        ],
-        'free_name': 'Free',
+        'video_note': 'The full build is walked through end to end.',
+        'tiers_sub': 'The back end is identical in both. The paid build is the same shop, further along.',
+        'both': COMMON_BOTH,
         'free_sub': 'The build from the tutorial, exactly as shown.',
         'free_items': [
             'Working shop UI you can buy from',
             'Item data set up and easy to extend',
             'Drops straight into an existing game',
         ],
-        'prem_sub': 'The same shop, finished and dressed up.',
-        'prem_items': [
+        'paid_sub': 'The same shop, finished and dressed up.',
+        'paid_items': [
             'Polished, animated interface',
             'Category tabs and sale timers',
             'Confetti on a successful purchase',
             'Purchase log via Discord webhooks',
-            'Priority support if something breaks',
         ],
-        'note': '<b>To be clear:</b> the free version is a working shop, not a demo. Premium adds presentation and convenience on top of the same foundation.',
-        'setup_sub': '',
-        'setup': [],
-        'vault_sub': 'Copy-paste versions of the shop scripts are being added here.',
+        'note': '<b>To be clear:</b> the free version is a working shop, not a demo.',
+        'vault_sub': '',
         'freeKey': 'W29xU',
         'premKey': '8vZLn',
         'premPrice': '$4.99',
+        'paidName': 'Premium',
         'freeLabel': 'Download the free version',
         'buy_free': [
             'Working shop from the tutorial',
             'Item data set up and extendable',
             'No email wall, no account needed',
         ],
-        'buy_prem': [
+        'buy_paid': [
             'Polished animated interface',
             'Category tabs and sale timers',
             'Confetti purchase effect',
             'Discord webhook purchase log',
-            'Priority support',
         ],
         'media': [
             {'type': 'image', 'src': '/images/ItemShop.jpg'},
             {'type': 'video', 'id': 'W4TD81WCRQc'},
         ],
-        'scripts': [],
     },
 ]
 
@@ -461,4 +642,4 @@ for p in PRODUCTS:
         f.write(build(p))
     with io.open(os.path.join(root, 'systems', p['key'] + '.html'), 'w', encoding='utf-8') as f:
         f.write(REDIRECT % {'slug': p['slug']})
-    print('wrote', p['slug'])
+    print('wrote %-34s %s' % (p['slug'], '(hidden)' if p.get('hidden') else ''))
