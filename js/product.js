@@ -125,6 +125,9 @@
       '" target="_blank" rel="noopener">' + inner + '</a>';
   }
 
+  var PRIV = '<div class="ff-buy-priv">Payhip handles the checkout and will ask for your name and email. ' +
+    'I never see your card details.</div>';
+
   function setTab(mode) {
     var tf = $('fftbf'), tp = $('fftbp'), bc = $('ffbc'), bf = $('ffbf');
     if (!bc || !bf) return;
@@ -148,18 +151,18 @@
         }).join('');
       bf.innerHTML = '<div class="ff-buy-fl">' + esc(P.featsLabel || 'Includes') + '</div>' +
         (P.premFeatures || []).map(function (f) { return featRow(f, true); }).join('') +
-        (P.buyFoot ? '<div class="ff-buy-foot">' + esc(P.buyFoot) + '</div>' : '');
+        (P.buyFoot ? '<div class="ff-buy-foot">' + esc(P.buyFoot) + '</div>' : '') + PRIV;
       return;
     }
 
     if (mode === 'free') {
       bc.innerHTML =
         '<div class="ff-pr-row"><span class="ff-pr-free">Free</span></div>' +
-        '<div class="ff-pr-note">No account tricks, no email wall · Instant download</div>' +
+        '<div class="ff-pr-note">Instant download</div>' +
         freeBtn + premBtn;
       bf.innerHTML = '<div class="ff-buy-fl">What\'s in the free download</div>' +
         (P.freeFeatures || []).map(function (f) { return featRow(f, false); }).join('') +
-        '<div class="ff-buy-foot">Every script is on this page as well, free to copy.</div>';
+        '<div class="ff-buy-foot">Every script is on this page as well, free to copy.</div>' + PRIV;
     } else {
       var showOrig = P.premOriginal && P.premOriginal !== P.premPrice;
       bc.innerHTML =
@@ -169,7 +172,7 @@
         premBtn + freeBtn;
       bf.innerHTML = '<div class="ff-buy-fl">' + esc(P.paidName) + ' adds</div>' +
         (P.premFeatures || []).map(function (f) { return featRow(f, true); }).join('') +
-        '<div class="ff-buy-foot">Optional. It only saves you the setup time.</div>';
+        '<div class="ff-buy-foot">Optional. It only saves you the setup time.</div>' + PRIV;
     }
   }
 

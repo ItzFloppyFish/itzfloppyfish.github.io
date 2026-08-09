@@ -56,7 +56,7 @@ FOOTER = '''<footer class="ffoot">
       <span class="ffoot-sep">&#183;</span>
       <span>Not affiliated with Roblox Corporation.</span>
     </div>
-    <div class="ffoot-bot-right">v3.4.0</div>
+    <div class="ffoot-bot-right">v3.6.0</div>
   </div>
 </footer>'''
 
@@ -356,22 +356,21 @@ PRODUCTS = [
         'meta': 'Walkable ASMR butter for Roblox. Sink into a soft block, or crack the crust on the crunchy version. Free Blender models and all four scripts, or the drop-in build.',
         'lead': 'Butter you sink into. Stand on the soft block and it dents under you, slowly easing back once you step off. The crunchy version has a hard shell on top that cracks apart as you press into it, then closes back up behind you.',
         'video_url': 'https://www.youtube.com/watch?v=' + BUTTER_VIDEO_ID if BUTTER_VIDEO_ID else '',
-        'tiers_sub': 'Same system either way. The difference is how much of it is already built.',
+        'tiers_sub': 'Same system either way. One you build, one is ready to go.',
         'both': COMMON_BOTH,
-        'free_sub': 'The models, plus every script on this page.',
+        'free_sub': 'Build it yourself from the video.',
         'free_items': [
-            'Both Blender models, smooth and crunchy',
+            'Both Blender models',
             'All four scripts, copyable below',
-            'You add the sounds and set the models up',
+            'You put it together yourself',
         ],
-        'paid_sub': 'The same thing, already put together.',
+        'paid_sub': 'Everything ready to go.',
         'paid_items': [
-            'Place file with everything assembled',
-            'Butter sounds included and wired up',
-            'Both butter types ready to walk on',
-            'Priority support if something breaks',
+            'Models and all four scripts in one file',
+            'Already organised, just drag it in',
+            'No setup work',
         ],
-        'note': '<b>To be clear:</b> the drop-in build adds nothing you can\'t make from the free files. It is a shortcut, not a better system.',
+        'note': 'Nothing is held back from the free version. You are paying for the setup time, not for extra features.',
         'vault_sub': 'Copy any of them straight into Studio.',
         'freeKey': BUTTER_FREE_KEY,
         'premKey': BUTTER_PAID_KEY,
@@ -380,13 +379,11 @@ PRODUCTS = [
         'buy_free': [
             'Both Blender models',
             'All four scripts (copyable below)',
-            'No email wall, no account needed',
         ],
         'buy_paid': [
-            'Place file, everything assembled',
-            'Butter sounds included',
-            'Both butter types ready to go',
-            'Priority support',
+            'Models and all four scripts in one file',
+            'Already organised, just drag it in',
+            'No setup work',
         ],
         'media': ([{'type': 'video', 'id': BUTTER_VIDEO_ID}] if BUTTER_VIDEO_ID else []) +
                  [{'type': 'image', 'src': '/images/ASMRButter1.jpg'}],
@@ -406,22 +403,21 @@ PRODUCTS = [
         'meta': 'Poppable ASMR bubble wrap for Roblox. Walk over it and every bubble squashes with a real pop. Free model and both scripts, or the drop-in build.',
         'lead': 'Bubble wrap you can actually walk on. Every bubble squashes under your feet with a proper pop, re-inflates a few seconds later, and never sounds the same twice. Pitch and volume shift on every pop, so a whole sheet doesn\'t turn into a machine gun.',
         'video_url': 'https://www.youtube.com/watch?v=AfkSKUOUKA4',
-        'tiers_sub': 'Same system either way. The difference is how much of it is already built.',
+        'tiers_sub': 'Same system either way. One you build, one is ready to go.',
         'both': COMMON_BOTH,
-        'free_sub': 'The model, plus both scripts on this page.',
+        'free_sub': 'Build it yourself from the video.',
         'free_items': [
             'The bubble wrap Blender model',
             'Both scripts, copyable below',
-            'You add the sounds and place the bubbles',
+            'You put it together yourself',
         ],
-        'paid_sub': 'The same thing, already put together.',
+        'paid_sub': 'Everything ready to go.',
         'paid_items': [
-            'Place file with everything assembled',
-            'Pop sound pack included and wired up',
-            'Bubbles placed, tagged and tuned',
-            'Priority support if something breaks',
+            'Model and both scripts in one file',
+            'Already organised, just drag it in',
+            'No setup work',
         ],
-        'note': '<b>To be clear:</b> the drop-in build adds nothing you can\'t make from the free files. It is a shortcut, not a better system.',
+        'note': 'Nothing is held back from the free version. You are paying for the setup time, not for extra features.',
         'vault_sub': 'Copy either one straight into Studio.',
         'freeKey': 'qdN84',
         'premKey': 'fV5h0',
@@ -430,13 +426,11 @@ PRODUCTS = [
         'buy_free': [
             'The bubble wrap Blender model',
             'Both scripts (copyable below)',
-            'No email wall, no account needed',
         ],
         'buy_paid': [
-            'Place file, everything assembled',
-            'Pop sound pack included',
-            'Bubbles placed, tagged and tuned',
-            'Priority support',
+            'Model and both scripts in one file',
+            'Already organised, just drag it in',
+            'No setup work',
         ],
         'media': [
             {'type': 'video', 'id': 'AfkSKUOUKA4'},
@@ -456,22 +450,21 @@ PRODUCTS = [
         'meta': 'A giant walkable keyboard for Roblox. Every key drops and clicks as you step on it, with randomised colours and letters. Free model and both scripts, or the drop-in build.',
         'lead': 'A giant keyboard you walk across. Each key sinks under your weight with a clean mechanical click and springs back when you step off, and the keys colour themselves and pick their own letters on join, so no two servers look the same.',
         'video_url': 'https://www.youtube.com/watch?v=IHcgO49qaJA',
-        'tiers_sub': 'Same system either way. The difference is how much of it is already built.',
+        'tiers_sub': 'Same system either way. One you build, one is ready to go.',
         'both': COMMON_BOTH,
-        'free_sub': 'The model, plus both scripts on this page.',
+        'free_sub': 'Build it yourself from the video.',
         'free_items': [
-            'The Key Blender model from the video',
+            'The Key Blender model',
             'Both scripts, copyable below',
-            'You lay out the keyboard and add the sound',
+            'You put it together yourself',
         ],
-        'paid_sub': 'The same thing, already put together.',
+        'paid_sub': 'Everything ready to go.',
         'paid_items': [
-            'Full keyboard laid out and ready to drop in',
-            'Multiple keypress sound variations',
-            'Key model included and set up',
-            'Priority support if something breaks',
+            'Model and both scripts in one file',
+            'Already organised, just drag it in',
+            'No setup work',
         ],
-        'note': '<b>To be clear:</b> the drop-in build adds nothing you can\'t make from the free files. It is a shortcut, not a better system.',
+        'note': 'Nothing is held back from the free version. You are paying for the setup time, not for extra features.',
         'vault_sub': 'Copy either one straight into Studio.',
         'freeKey': '4wF3G',
         'premKey': 'eKqY7',
@@ -480,13 +473,11 @@ PRODUCTS = [
         'buy_free': [
             'The Key Blender model',
             'Both scripts (copyable below)',
-            'No email wall, no account needed',
         ],
         'buy_paid': [
-            'Full keyboard laid out, zero setup',
-            'Multiple keypress sound variations',
-            'Key model included and set up',
-            'Priority support',
+            'Model and both scripts in one file',
+            'Already organised, just drag it in',
+            'No setup work',
         ],
         'media': [
             {'type': 'video', 'id': 'IHcgO49qaJA'},
@@ -597,7 +588,6 @@ PRODUCTS = [
         'buy_free': [
             'Working shop from the tutorial',
             'Item data set up and extendable',
-            'No email wall, no account needed',
         ],
         'buy_paid': [
             'Polished animated interface',
